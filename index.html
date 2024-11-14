@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
-  <title>Tomer Torgeman | Software Engineer </title>
+  <title>Tomer Torgeman | Software Engineer</title>
 
   <link rel="stylesheet" href="static/css/styles.css">
   <link rel="stylesheet" href="static/css/pygment_trac.css">
@@ -17,87 +17,142 @@
 </head>
 
 <style>
-  .bio a:not(:first-child) i {
-    font-size: 26px;
-    /* color: #595959; */
-    padding-left: 1rem;
+  /* Gradient Background */
+  body {
+    background: linear-gradient(to bottom, #1a1a2e, #0f0f1f);
+    color: #e0e0e0;
+    font-family: Arial, sans-serif;
   }
 
+  /* Profile Picture Styling */
   .propic img {
     border-radius: 50%;
     object-fit: cover;
-    border: 3px dotted #ffdeb9;
-    /* 2px wide black border */
+    border: 3px solid #ffdeb9;
+    /* width: 220px;
+    height: 220px; */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
   }
 
-  /* .center {
+  /* Section Header Styling */
+  section h2, section h3 {
+    color: #8ab4f8;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #8ab4f8;
+    margin-top: 2rem;
+  }
+
+  /* Card Style for Projects */
+  .project-card {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 1rem;
+    margin: 1.5rem 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .project-card video {
+    width: 100%;
+    border-radius: 8px;
+  }
+
+  /* Footer Styling */
+  footer {
+    background-color: #0d0d1a;
+    color: #b0b0b0;
+    padding: 1rem;
     text-align: center;
-  } */
+    font-size: 0.9em;
+    border-top: 1px solid #444;
+  }
+
+  /* Social Media Icons Styling */
+  .bio a i {
+    font-size: 26px;
+    color: #8ab4f8;
+    padding-left: 1rem;
+  }
+
+  .bio a i:hover {
+    color: #ffdeb9;
+    transform: scale(1.1);
+    transition: color 0.3s, transform 0.3s;
+  }
 </style>
 
 <body>
   <div class="wrapper">
     <header>
-      <h1 class="propic"><a href="/">
-          <div class="center"><img src="static/img/e.jpg" width="200"></div>
+      <h1 class="propic">
+        <a href="/">
+          <div class="center">
+            <img src="static/img/e.jpg">
+          </div>
         </a>
       </h1>
-      <p class="bio"><span class="center"></span><br><br>
+      <p class="bio">
         <a href="https://github.com/ttomer" target="_blank" title="Opens in a new window">
           <i class="fa fa-github" aria-hidden="true"></i>
         </a>
         <a href="https://www.linkedin.com/in/tomer-torgeman-a12494173" target="_blank" title="Opens in a new window">
           <i class="fa fa-linkedin" aria-hidden="true"></i>
+        </a>
         <a href="https://www.instagram.com/certified_jew_boy/" target="_blank" title="Opens in a new window">
           <i class="fa fa-instagram" aria-hidden="true"></i>
         </a>
       </p>
       <p class="center"><a href="https://github.com/ttomer/portfolio_website">This Site's Code</a></p>
     </header>
+
     <section>
-
       <h2>👋🏻 Hi, I'm Tomer!</h2>
-
       <h3>Bio 🤔</h3>
-
       <p>
         I started my journey in the cybersecurity industry and then moved into the gaming industry which is where I have been since!
       </p>
       <p>
         I've worn many hats - Software Engineer, QA, Automation Engineer, and today I work on cool personal projects and courses.
       </p>
+
       <h3>Balance 🧘🏼</h3>
       <p>
         I'm all about work/life balance and love exploring different cultures through travel! As well as dabble in video games, 
-        specifically real time strategy games.
+        specifically real-time strategy games.
       </p>
       <p>
         Interested in my most recent projects? Take a look below at some cool games I have made:
       </p>
 
       <h2>Projects 🛠️</h2>
+      <div class="project-card">
+        <p>My first first person shooter game:</p>
+        <video controls loop="" muted="" autoplay="">
+          <source src="https://github.com/ttomer/portfolio_website/raw/refs/heads/dev/assets/FPS-Shooter.mov">
+        </video>
+      </div>
 
-      <video width="600" height="440" controls loop="" muted= "" autoplay="">
-        <source src="https://github.com/ttomer/portfolio_website/raw/refs/heads/dev/assets/FPS-Shooter.mov">
-      </video>
-
-
-      <h2>Load Time Optimizations 🛠️</h2>
-      <h3> Original Load time:</h3>
-      <video width="600" height="440" controls loop="" muted= "" autoplay="">
-        <source src="https://github.com/ttomer/portfolio_website/raw/refs/heads/dev/assets/original.mov">
-      </video>
-      <h3> Async Load time:</h3>
-      <video width="600" height="440" controls loop="" muted= "" autoplay="">
-        <source src="https://github.com/ttomer/portfolio_website/raw/refs/heads/dev/assets/async.mov">
-      </video>
-      <h3> Cached Async Load time:</h3>
-      <video width="600" height="440" controls loop="" muted= "" autoplay="">
-        <source src="https://github.com/ttomer/portfolio_website/raw/refs/heads/dev/assets/async%20cached.mov">
-      </video>
+      <div class="project-card">
+        <h3>Load Time Optimizations 🛠️</h3>
+        <h3>Original Load time:</h3>
+        <video controls loop="" muted="" autoplay="">
+          <source src="https://github.com/ttomer/portfolio_website/raw/refs/heads/dev/assets/original.mov">
+        </video>
+        <h3>Async Load time:</h3>
+        <video controls loop="" muted="" autoplay="">
+          <source src="https://github.com/ttomer/portfolio_website/raw/refs/heads/dev/assets/async.mov">
+        </video>
+        <h3>Cached Async Load time:</h3>
+        <video controls loop="" muted="" autoplay="">
+          <source src="https://github.com/ttomer/portfolio_website/raw/refs/heads/dev/assets/async%20cached.mov">
+        </video>
+      </div>
     </section>
+
     <footer>
-      <p><small>me (at) tomertorgeman (dot) dev</small></p>
+      <p><small>tomer (dash) dev (dot) xyz</small></p>
     </footer>
   </div>
   <script src="static/js/scale.fix.js"></script>
