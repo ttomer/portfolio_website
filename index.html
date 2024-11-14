@@ -14,6 +14,7 @@
   <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
 </head>
 
 <style>
@@ -24,13 +25,49 @@
     font-family: Arial, sans-serif;
   }
 
+  /* Particle Background Container */
+  #particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    top: 0;
+    left: 0;
+  }
+
+  /* Typing Animation */
+  .intro {
+    font-size: 2rem;
+    text-align: center;
+    color: #8ab4f8;
+    margin-top: 2rem;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid #8ab4f8;
+    display: inline-block;
+    animation: typing 6s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%; /* Allow the width to expand fully */
+    }
+}
+
+@keyframes blink-caret {
+    50% {
+        border-color: transparent;
+    }
+}
+
   /* Profile Picture Styling */
   .propic img {
     border-radius: 50%;
     object-fit: cover;
     border: 3px solid #ffdeb9;
-    /* width: 220px;
-    height: 220px; */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
   }
 
@@ -84,8 +121,15 @@
 </style>
 
 <body>
+  <div id="particles-js"></div>
+
   <div class="wrapper">
     <header>
+      <!-- Animated Intro Section -->
+      <section class="intro-section">
+        <div class="intro">Hi, I'm Tomer | Software Engineer</div>
+      </section>
+
       <h1 class="propic">
         <a href="/">
           <div class="center">
@@ -106,6 +150,7 @@
       </p>
       <p class="center"><a href="https://github.com/ttomer/portfolio_website">This Site's Code</a></p>
     </header>
+
 
     <section>
       <h2>👋🏻 Hi, I'm Tomer!</h2>
@@ -155,7 +200,114 @@
       <p><small>tomer (dash) dev (dot) xyz</small></p>
     </footer>
   </div>
+
   <script src="static/js/scale.fix.js"></script>
+  <script>
+particlesJS('particles-js', {
+  "particles": {
+    "number": {
+      "value": 80,
+      "density": {
+        "enable": true,
+        "value_area": 800
+      }
+    },
+    "color": {
+      "value": "#8ab4f8"
+    },
+    "shape": {
+      "type": "circle",
+      "stroke": {
+        "width": 0,
+        "color": "#000000"
+      },
+      "polygon": {
+        "nb_sides": 5
+      }
+    },
+    "opacity": {
+      "value": 0.5,
+      "random": false,
+      "anim": {
+        "enable": false,
+        "speed": 1,
+        "opacity_min": 0.1,
+        "sync": false
+      }
+    },
+    "size": {
+      "value": 3,
+      "random": true,
+      "anim": {
+        "enable": false,
+        "speed": 40,
+        "size_min": 0.1,
+        "sync": false
+      }
+    },
+    "line_linked": {
+      "enable": true,
+      "distance": 150,
+      "color": "#8ab4f8",
+      "opacity": 0.4,
+      "width": 1
+    },
+    "move": {
+      "enable": true,
+      "speed": 2,
+      "direction": "none",
+      "random": false,
+      "straight": false,
+      "out_mode": "out",
+      "attract": {
+        "enable": false,
+        "rotateX": 600,
+        "rotateY": 1200
+      }
+    }
+  },
+  "interactivity": {
+    "detect_on": "canvas",
+    "events": {
+      "onhover": {
+        "enable": true,
+        "mode": "repulse"
+      },
+      "onclick": {
+        "enable": true,
+        "mode": "push"
+      },
+      "resize": true
+    },
+    "modes": {
+      "grab": {
+        "distance": 400,
+        "line_linked": {
+          "opacity": 1
+        }
+      },
+      "bubble": {
+        "distance": 400,
+        "size": 40,
+        "duration": 2,
+        "opacity": 8,
+        "speed": 3
+      },
+      "repulse": {
+        "distance": 100,
+        "duration": 0.4
+      },
+      "push": {
+        "particles_nb": 4
+      },
+      "remove": {
+        "particles_nb": 2
+      }
+    }
+  },
+  "retina_detect": true
+});
+  </script>
 </body>
 
 </html>
