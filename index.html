@@ -30,12 +30,42 @@
     /* 2px wide black border */
   }
 
+  /* ========================== */
+  body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      overflow-x: hidden;
+    }
+    #background-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+    .content {
+      position: relative;
+      z-index: 1;
+      color: #333;
+      padding: 50px;
+      max-width: 800px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+    /* ========================== */
   /* .center {
     text-align: center;
   } */
 </style>
 
 <body>
+  <canvas id="background-canvas"></canvas>
+
+
+
   <div class="wrapper">
     <header>
       <h1 class="propic"><a href="/">
@@ -80,8 +110,7 @@
       </p>
       <p>
         Interested in my most recent projects? Take a look below at some cool games I have made:
-      </p>
-
+      </p>      
       <h2>Load Time Optimizations 🛠️</h2>
       <h3> Original Load time:</h3>
       <video width="600" height="440" controls loop="" muted= "" autoplay="">
@@ -155,6 +184,105 @@
     </footer>
   </div>
   <script src="static/js/scale.fix.js"></script>
+  <!-- Use ES modules to import Three.js and GLTFLoader from unpkg -->
+  <script type="module">
+    import { Scene, PerspectiveCamera, WebGLRenderer, AmbientLight, DirectionalLight } from 'https://unpkg.com/three@0.152.0/build/three.module.js';
+    import { GLTFLoader } from 'https://unpkg.com/three@0.152.0/examples/jsm/loaders/GLTFLoader.js';
+
+    const scene = new Scene();
+    const camera = new PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new WebGLRenderer({ canvas: document.getElementById('background-canvas'), alpha: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setClearColor(0x000000, 0);
+
+    camera.position.z = 10;
+
+    const ambientLight = new AmbientLight(0xffffff, 1);
+    scene.add(ambientLight);
+    const directionalLight = new DirectionalLight(0xffffff, 1);
+    directionalLight.position.set(5, 5, 5);
+    scene.add(directionalLight);
+
+    const loader = new GLTFLoader();
+    let model;
+
+    loader.load('http://localhost:8000/assets/robot_4_legs_light_copy.gltf', function(gltf) {
+      model = gltf.scene;
+      scene.add(model);
+      model.scale.set(2, 2, 2);
+      model.position.set(0, 0, 0);
+      console.log("Model loaded successfully:", model);
+    }, undefined, function(error) {
+      console.error('An error happened while loading the model:', error);
+    });
+
+    function animate() {
+      requestAnimationFrame(animate);
+      if (model) {
+        model.rotation.y = window.scrollY * 0.005;
+      }
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    window.addEventListener('resize', () => {
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+    });
+  </script>
+
+
+
+
+  <!-- <script src="https://cdn.jsdelivr.net/npm/three@0.152.0/examples/js/loaders/GLTFLoader.js"></script>
+    <script>
+    // Set up scene, camera, and renderer
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('background-canvas'), alpha: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+
+    // Position camera
+    camera.position.z = 5;
+
+    // Load the GLTF model
+    const loader = new THREE.GLTFLoader();
+    let model;
+
+    loader.load('http://localhost:8000/assets/robot_4_legs_light_copy.gltf', function(gltf) {
+      model = gltf.scene;
+      scene.add(model);
+
+      model.scale.set(1, 1, 1); // Increase if the model is too small
+      model.position.set(0, 0, 0); // Adjust position to center it in view
+
+    }, undefined, function(error) {
+      console.error('An error happened', error);
+    });
+
+    // Render loop
+    function animate() {
+      requestAnimationFrame(animate);
+
+      // Rotate model if it has been loaded
+      if (model) {
+        model.rotation.y = window.scrollY * 0.005; // Adjust rotation speed here if needed
+      }
+
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    // Adjust canvas size on window resize
+    window.addEventListener('resize', () => {
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+    });
+  </script> -->
+
+
 </body>
 
 </html>
