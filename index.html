@@ -35,7 +35,7 @@
 
   /* Typing Animation */
   .intro {
-    font-size: 2rem;
+    font-size: 2rem; /* Default size */
     text-align: center;
     color: #8ab4f8;
     margin-top: 2rem;
@@ -44,7 +44,21 @@
     border-right: 3px solid #8ab4f8;
     display: inline-block;
     animation: typing 6s steps(40, end), blink-caret 0.75s step-end infinite;
-  }
+}
+
+/* Adjust font size for smaller screens */
+@media (max-width: 768px) {
+    .intro {
+        font-size: 1.5rem; /* Adjust font size for tablets */
+    }
+}
+
+@media (max-width: 480px) {
+    .intro {
+        font-size: 1.2rem; /* Adjust font size for mobile */
+    }
+}
+
 
   @keyframes typing {
     from {
