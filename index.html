@@ -25,7 +25,7 @@
 
   /* Particle Background Container */
   #particles-js {
-    position: absolute;
+    position: fixed;
     width: 100%;
     height: 100%;
     z-index: -1;
@@ -373,7 +373,7 @@
         I started my journey in the cybersecurity industry and then moved into the gaming industry which is where I have been since!
       </p>
       <p data-aos="fade-right">
-        I've worn many hats - Software Engineer, QA, Automation Engineer, and today I work on cool personal projects and courses.
+        I've worn many hats - Software Engineer, QA, Automation Engineer, and on the side I work on personal projects and courses.
       </p>
       <h3 data-aos="fade-up">Balance 🧘🏼</h3>
       <p data-aos="fade-right">
@@ -650,6 +650,18 @@ window.onclick = function(event) {
         particle.remove();
       }, 1000); // Matches the 1s animation duration
     });
+    </script>
+    <script>
+      function updateParticlesHeight() {
+        const particlesElement = document.getElementById("particles-js");
+        const documentHeight = document.documentElement.scrollHeight;
+        particlesElement.style.height = `${documentHeight}px`;
+      }
+    
+      // Update the height initially and on resize
+      window.addEventListener("load", updateParticlesHeight);
+      window.addEventListener("resize", updateParticlesHeight);
+      window.addEventListener("scroll", updateParticlesHeight);
     </script>
 <script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
 <script>
