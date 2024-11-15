@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="static/css/styles.css">
   <link rel="stylesheet" href="static/css/pygment_trac.css">
   <link rel="stylesheet" href="static/external/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css">
   <meta name="viewport" content="width=device-width">
   <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
 </head>
@@ -282,27 +283,27 @@
     </header>
 
     <section>
-      <h2>👋🏻 Hi, I'm Tomer!</h2>
-      <h3>Bio 🤔</h3>
-      <p>
+      <h2 data-aos="fade-up">👋🏻 Hi, I'm Tomer!</h2>
+      <h3 data-aos="fade-up">Bio 🤔</h3>
+      <p data-aos="fade-right">
         I started my journey in the cybersecurity industry and then moved into the gaming industry which is where I have been since!
       </p>
-      <p>
+      <p data-aos="fade-right">
         I've worn many hats - Software Engineer, QA, Automation Engineer, and today I work on cool personal projects and courses.
       </p>
-      <h3>Balance 🧘🏼</h3>
-      <p>
+      <h3 data-aos="fade-up">Balance 🧘🏼</h3>
+      <p data-aos="fade-right">
         I'm all about work/life balance and love exploring different cultures through travel! As well as dabble in video games,
         specifically real-time strategy games.
       </p>
-      <p>
+      <p data-aos="fade-right">
         Interested in my most recent projects? Take a look below at some cool games I have made:
       </p>
 
-      <h2>Projects 🛠️</h2>
+      <h2 data-aos="fade-up">Projects 🛠️</h2>
 
       <!-- First Project Card with Modal Trigger -->
-      <div class="project-card">
+      <div class="project-card" data-aos="zoom-in">
         <video controls loop muted autoplay>
           <source src="https://github.com/ttomer/portfolio_website/raw/refs/heads/dev/assets/FPS-Shooter.mov">
         </video>
@@ -314,7 +315,7 @@
       </div>
 
       <!-- Second Project Card -->
-      <div class="project-card">
+      <div class="project-card" data-aos="zoom-in">
         <video controls loop muted autoplay>
           <source src="https://github.com/ttomer/portfolio_website/raw/refs/heads/dev/assets/original.mov">
         </video>
@@ -325,7 +326,7 @@
         </div>
       </div>
       <!-- Third Project Card -->
-      <div class="project-card">
+      <div class="project-card" data-aos="zoom-in">
         <video controls loop muted autoplay>
           <source src="https://github.com/ttomer/portfolio_website/raw/refs/heads/dev/assets/async.mov">
         </video>
@@ -502,6 +503,15 @@
       }, 1000); // Matches the 1s animation duration
     });
     </script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 1000,  // Animation duration in milliseconds
+    easing: 'ease',  // Easing function for animations
+    once: true       // Only animate elements once when they come into view
+  });
+</script>
+
 </body>
 
 </html>
