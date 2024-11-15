@@ -549,6 +549,7 @@
 
     let timer; // Variable to store the setInterval reference
 let timerCount = 0; // Initialize the timer count
+let scrollPosition = 0; // Variable to store the scroll position
 
 function startTimer() {
   timerCount = 0; // Reset timer to 0 every time the modal opens
@@ -566,22 +567,36 @@ function stopTimer() {
 }
 
 function openModal(title, description, videoSrc, hasTimer = false) {
+  // Save the current scroll position and disable scrolling
+  scrollPosition = window.scrollY;
+  document.body.style.position = 'fixed';
+  document.body.style.top = `-${scrollPosition}px`;
+  document.body.style.width = '100%';
+
+  // Set modal content
   document.getElementById('modalTitle').innerText = title;
   document.getElementById('modalDescription').innerText = description;
   document.getElementById('modalVideo').src = videoSrc;
   document.getElementById('projectModal').style.display = 'block';
 
+  // Show timer if hasTimer is true
   if (hasTimer) {
-    startTimer(); // Start the timer if hasTimer is true
+    startTimer();
   } else {
-    document.getElementById('modalTimer').style.display = 'none'; // Ensure timer is hidden if hasTimer is false
+    document.getElementById('modalTimer').style.display = 'none';
   }
 }
 
 function closeModal() {
+  // Re-enable scrolling and restore the scroll position
+  document.body.style.position = '';
+  document.body.style.top = '';
+  window.scrollTo(0, scrollPosition);
+
+  // Hide modal
   document.getElementById('projectModal').style.display = 'none';
   document.getElementById('modalVideo').src = ''; // Stop video playback
-  stopTimer(); // Stop the timer when the modal closes
+  stopTimer(); // Stop the timer
 }
 
 // Close the modal when clicking outside of it
