@@ -160,7 +160,7 @@
     margin: 10% auto;
     padding: 20px;
     border-radius: 8px;
-    max-width: 600px;
+    max-width: 800px;
     color: #e0e0e0;
     text-align: center;
   }
@@ -383,15 +383,17 @@
         </div>
       </div>
 
+      <h2 data-aos="fade-up">Optimization 🛠️</h2>
+
       <!-- Second Project Card -->
       <div class="project-card" data-aos="zoom-in">
         <video controls loop muted autoplay>
           <source src="https://github.com/ttomer/portfolio_website/raw/refs/heads/dev/assets/original.mov">
         </video>
         <div class="project-overlay">
-          <h3>Load Time Optimization</h3>
-          <p>Improving web performance with optimized loading times.</p>
-          <a href="#" class="view-project" onclick="openModal('Load Time Optimization', 'Improving web performance with optimized loading times.', 'https://github.com/ttomer/portfolio_website/raw/refs/heads/dev/assets/original.mov')">View Optimization</a>
+          <h3>Unoptimized Load Time</h3>
+          <p>Load time before optimization for reference.</p>
+          <a href="#" class="view-project" onclick="openModal('Unoptimized Load Time', 'Load time before optimization', 'https://github.com/ttomer/portfolio_website/raw/refs/heads/dev/assets/original.mov')">View Before Optimization</a>
         </div>
       </div>
       <!-- Third Project Card -->
@@ -405,6 +407,19 @@
           <a href="#" class="view-project" onclick="openModal('Async Load Time', 'Demonstrating reduced load time with async methods.', 'https://github.com/ttomer/portfolio_website/raw/refs/heads/dev/assets/async.mov')">View Optimization</a>
         </div>
       </div>
+
+            <!-- Fourth Project Card -->
+            <div class="project-card" data-aos="zoom-in">
+              <video controls loop muted autoplay>
+                <source src="https://github.com/ttomer/portfolio_website/raw/refs/heads/dev/assets/async cached.mov">
+              </video>
+              <div class="project-overlay">
+                <h3>Cached Async Load Time</h3>
+                <p>Demonstrating reduced load time with cached async methods.</p>
+                <a href="#" class="view-project" onclick="openModal('Cached Async Load Time', 'Demonstrating reduced load time with cached async methods.', 'https://github.com/ttomer/portfolio_website/raw/refs/heads/dev/assets/async%20cached.mov')">View Optimization</a>
+              </div>
+            </div>
+
     </section>
 
     <footer>
@@ -418,7 +433,7 @@
       <span class="close" onclick="closeModal()">&times;</span>
       <h3 id="modalTitle">Project Title</h3>
       <p id="modalDescription">Here you can add more details about the project.</p>
-      <video id="modalVideo" controls></video>
+      <video id="modalVideo" controls loop muted autoplay></video>
     </div>
   </div>
 
