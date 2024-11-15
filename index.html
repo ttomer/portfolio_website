@@ -204,11 +204,33 @@
     transform: scale(1.1);
     transition: color 0.3s, transform 0.3s;
   }
+
+  /* Custom Cursor Styling */
+#custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 15px;
+  height: 15px;
+  background-color: #ffdeb9;
+  border-radius: 50%;
+  pointer-events: none;
+  transition: transform 0.15s ease, background-color 0.15s ease;
+  z-index: 10000;
+  mix-blend-mode: difference; /* Makes cursor stand out on any background */
+}
+
+/* Cursor expands when hovering over clickable elements */
+.hover-effect {
+  transform: scale(1.5);
+  background-color: #8ab4f8;
+}
+
 </style>
 
 <body>
   <div id="particles-js"></div>
-
+  <div id="custom-cursor"></div>
   <div class="wrapper">
     <header>
       <!-- Animated Intro Section -->
@@ -440,6 +462,27 @@
         closeModal();
       }
     }
+  </script>
+  <script>
+    const cursor = document.getElementById("custom-cursor");
+
+document.addEventListener("mousemove", (e) => {
+  cursor.style.top = `${e.clientY}px`;
+  cursor.style.left = `${e.clientX}px`;
+});
+
+// Add hover effect on clickable elements
+const hoverElements = document.querySelectorAll("a, button, .view-project, .propic img");
+
+hoverElements.forEach((el) => {
+  el.addEventListener("mouseenter", () => {
+    cursor.classList.add("hover-effect");
+  });
+  el.addEventListener("mouseleave", () => {
+    cursor.classList.remove("hover-effect");
+  });
+});
+
   </script>
 </body>
 
