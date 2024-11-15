@@ -20,7 +20,8 @@
     background: linear-gradient(to bottom, #1a1a2e, #0f0f1f);
     color: #e0e0e0;
     font-family: Arial, sans-serif;
-  }
+}
+
 
   /* Particle Background Container */
   #particles-js {
@@ -160,7 +161,7 @@
     margin: 10% auto;
     padding: 20px;
     border-radius: 8px;
-    max-width: 800px;
+    max-width: 1000px;
     color: #e0e0e0;
     text-align: center;
   }
@@ -567,37 +568,40 @@ function stopTimer() {
 }
 
 function openModal(title, description, videoSrc, hasTimer = false) {
-  // Save the current scroll position and disable scrolling
-  scrollPosition = window.scrollY;
-  document.body.style.position = 'fixed';
-  document.body.style.top = `-${scrollPosition}px`;
-  document.body.style.width = '100%';
+    // Save the current scroll position and disable scrolling
+    scrollPosition = window.scrollY;
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollPosition}px`;
+    document.body.style.width = '100%';
+    document.body.style.backgroundColor = '#1a1a2e'; // Set to match your background
 
-  // Set modal content
-  document.getElementById('modalTitle').innerText = title;
-  document.getElementById('modalDescription').innerText = description;
-  document.getElementById('modalVideo').src = videoSrc;
-  document.getElementById('projectModal').style.display = 'block';
+    // Set modal content
+    document.getElementById('modalTitle').innerText = title;
+    document.getElementById('modalDescription').innerText = description;
+    document.getElementById('modalVideo').src = videoSrc;
+    document.getElementById('projectModal').style.display = 'block';
 
-  // Show timer if hasTimer is true
-  if (hasTimer) {
-    startTimer();
-  } else {
-    document.getElementById('modalTimer').style.display = 'none';
-  }
+    // Show timer if hasTimer is true
+    if (hasTimer) {
+        startTimer();
+    } else {
+        document.getElementById('modalTimer').style.display = 'none';
+    }
 }
 
 function closeModal() {
-  // Re-enable scrolling and restore the scroll position
-  document.body.style.position = '';
-  document.body.style.top = '';
-  window.scrollTo(0, scrollPosition);
+    // Re-enable scrolling and restore the scroll position
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.backgroundColor = ''; // Reset to remove inline styling
+    window.scrollTo(0, scrollPosition);
 
-  // Hide modal
-  document.getElementById('projectModal').style.display = 'none';
-  document.getElementById('modalVideo').src = ''; // Stop video playback
-  stopTimer(); // Stop the timer
+    // Hide modal
+    document.getElementById('projectModal').style.display = 'none';
+    document.getElementById('modalVideo').src = ''; // Stop video playback
+    stopTimer(); // Stop the timer
 }
+
 
 // Close the modal when clicking outside of it
 window.onclick = function(event) {
