@@ -204,33 +204,52 @@
     transform: scale(1.1);
     transition: color 0.3s, transform 0.3s;
   }
-
-  /* Custom Cursor Styling */
-#custom-cursor {
+  /* Custom Cursor Dot */
+#cursor-dot {
   position: fixed;
   top: 0;
   left: 0;
-  width: 15px;
-  height: 15px;
+  width: 8px;
+  height: 8px;
   background-color: #ffdeb9;
   border-radius: 50%;
   pointer-events: none;
-  transition: transform 0.15s ease, background-color 0.15s ease;
   z-index: 10000;
-  mix-blend-mode: difference; /* Makes cursor stand out on any background */
+  transition: transform 0.1s ease;
+  mix-blend-mode: difference;
 }
 
-/* Cursor expands when hovering over clickable elements */
-.hover-effect {
+/* Custom Cursor Ring */
+#cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 30px;
+  height: 30px;
+  border: 2px solid #ffdeb9;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.2s ease, border-color 0.15s ease;
+}
+
+/* Hover Effect - Changes ring color and enlarges it */
+.hover-effect #cursor-dot {
   transform: scale(1.5);
-  background-color: #8ab4f8;
+}
+
+.hover-effect #cursor-ring {
+  border-color: #8ab4f8;
+  transform: scale(1.5);
 }
 
 </style>
 
 <body>
   <div id="particles-js"></div>
-  <div id="custom-cursor"></div>
+  <div id="cursor-dot"></div>
+  <div id="cursor-ring"></div>
+  
   <div class="wrapper">
     <header>
       <!-- Animated Intro Section -->
@@ -464,22 +483,24 @@
     }
   </script>
   <script>
-    const cursor = document.getElementById("custom-cursor");
+    const cursorDot = document.getElementById("cursor-dot");
+const cursorRing = document.getElementById("cursor-ring");
 
 document.addEventListener("mousemove", (e) => {
-  cursor.style.top = `${e.clientY}px`;
-  cursor.style.left = `${e.clientX}px`;
+  cursorDot.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+  cursorRing.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
 });
 
-// Add hover effect on clickable elements
 const hoverElements = document.querySelectorAll("a, button, .view-project, .propic img");
 
 hoverElements.forEach((el) => {
   el.addEventListener("mouseenter", () => {
-    cursor.classList.add("hover-effect");
+    cursorDot.classList.add("hover-effect");
+    cursorRing.classList.add("hover-effect");
   });
   el.addEventListener("mouseleave", () => {
-    cursor.classList.remove("hover-effect");
+    cursorDot.classList.remove("hover-effect");
+    cursorRing.classList.remove("hover-effect");
   });
 });
 
