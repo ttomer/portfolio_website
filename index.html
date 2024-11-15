@@ -204,11 +204,53 @@
     transform: scale(1.1);
     transition: color 0.3s, transform 0.3s;
   }
+
+  /* Main Cursor Dot */
+#cursor-dot {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  background-color: #ffdeb9;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10000;
+  transform: translate(-50%, -50%);
+}
+
+/* Cursor Halo */
+#cursor-halo {
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #ff007f, #ffdeb9, #8ab4f8, #00ffd9);
+  background-size: 200% 200%;
+  animation: gradient-shift 3s infinite alternate;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* Gradient Shift Animation */
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+/* Hover Effect - Expands and Intensifies Halo */
+.hover-effect #cursor-halo {
+  transform: translate(-50%, -50%) scale(1.5);
+  box-shadow: 0 0 15px 10px rgba(255, 222, 185, 0.6);
+}
+
 </style>
 
 <body>
   <div id="particles-js"></div>
-
+  <div id="cursor-dot"></div>
+  <div id="cursor-halo"></div>
+  
   <div class="wrapper">
     <header>
       <!-- Animated Intro Section -->
@@ -441,6 +483,30 @@
       }
     }
   </script>
+  <script>// Main Cursor Dot and Halo
+    const cursorDot = document.getElementById("cursor-dot");
+    const cursorHalo = document.getElementById("cursor-halo");
+    
+    // Track Mouse Movement
+    document.addEventListener("mousemove", (e) => {
+      cursorDot.style.left = `${e.clientX}px`;
+      cursorDot.style.top = `${e.clientY}px`;
+      cursorHalo.style.left = `${e.clientX}px`;
+      cursorHalo.style.top = `${e.clientY}px`;
+    });
+    
+    // Apply Hover Effect to Interactive Elements
+    const hoverElements = document.querySelectorAll("a, button, .view-project, .propic img");
+    
+    hoverElements.forEach((el) => {
+      el.addEventListener("mouseenter", () => {
+        cursorHalo.classList.add("hover-effect");
+      });
+      el.addEventListener("mouseleave", () => {
+        cursorHalo.classList.remove("hover-effect");
+      });
+    });
+    </script>
 </body>
 
 </html>
