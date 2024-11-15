@@ -11,9 +11,6 @@
   <link rel="stylesheet" href="static/external/font-awesome/css/font-awesome.min.css">
 
   <meta name="viewport" content="width=device-width">
-  <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
   <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
 </head>
 
@@ -46,22 +43,22 @@
     border-right: 3px solid #8ab4f8;
     display: inline-block;
     animation: typing 6s steps(40, end), blink-caret 0.75s step-end infinite;
-}
+  }
 
-@keyframes typing {
+  @keyframes typing {
     from {
-        width: 0;
+      width: 0;
     }
     to {
-        width: 100%; /* Allow the width to expand fully */
+      width: 100%;
     }
-}
+  }
 
-@keyframes blink-caret {
+  @keyframes blink-caret {
     50% {
-        border-color: transparent;
+      border-color: transparent;
     }
-}
+  }
 
   /* Profile Picture Styling */
   .propic img {
@@ -79,21 +76,70 @@
     margin-top: 2rem;
   }
 
-  /* Card Style for Projects */
+  /* Project Card with Hover Effect */
   .project-card {
-    background-color: rgba(255, 255, 255, 0.05);
-    padding: 1rem;
-    margin: 1.5rem 0;
+    position: relative;
+    overflow: hidden;
     border-radius: 8px;
+    transition: transform 0.3s;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
+    margin-bottom: 20px;
+  }
+
+  .project-card:hover {
+    transform: scale(1.05);
   }
 
   .project-card video {
     width: 100%;
     border-radius: 8px;
+  }
+
+  .project-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  .project-card:hover .project-overlay {
+    opacity: 1;
+  }
+
+  .project-overlay h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #8ab4f8;
+  }
+
+  .project-overlay p {
+    margin: 10px 0;
+  }
+
+  .view-project {
+    color: #ffdeb9;
+    text-decoration: none;
+    border: 1px solid #ffdeb9;
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  .view-project:hover {
+    background-color: #ffdeb9;
+    color: #1a1a2e;
   }
 
   /* Footer Styling */
@@ -130,27 +176,34 @@
         <div class="intro">Hi, I'm Tomer | Software Engineer</div>
       </section>
 
-      <h1 class="propic">
-        <a href="/">
-          <div class="center">
-            <img src="static/img/e.jpg">
-          </div>
-        </a>
-      </h1>
-      <p class="bio">
-        <a href="https://github.com/ttomer" target="_blank" title="Opens in a new window">
-          <i class="fa fa-github" aria-hidden="true"></i>
-        </a>
-        <a href="https://www.linkedin.com/in/tomer-torgeman-a12494173" target="_blank" title="Opens in a new window">
-          <i class="fa fa-linkedin" aria-hidden="true"></i>
-        </a>
-        <a href="https://www.instagram.com/certified_jew_boy/" target="_blank" title="Opens in a new window">
-          <i class="fa fa-instagram" aria-hidden="true"></i>
-        </a>
-      </p>
-      <p class="center"><a href="https://github.com/ttomer/portfolio_website">This Site's Code</a></p>
-    </header>
+      <!-- Container for profile picture and bio section -->
+      <div class="container">
+        <div class="profile-section">
+          <h1 class="propic">
+            <a href="/">
+              <img src="static/img/e.jpg">
+            </a>
+          </h1>
+        </div>
 
+        <div class="bio-section">
+          <p class="bio">
+            <a href="https://github.com/ttomer" target="_blank" title="Opens in a new window">
+              <i class="fa fa-github" aria-hidden="true"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/tomer-torgeman-a12494173" target="_blank" title="Opens in a new window">
+              <i class="fa fa-linkedin" aria-hidden="true"></i>
+            </a>
+            <a href="https://www.instagram.com/certified_jew_boy/" target="_blank" title="Opens in a new window">
+              <i class="fa fa-instagram" aria-hidden="true"></i>
+            </a>
+          </p>
+          <p class="center">
+            <a href="https://github.com/ttomer/portfolio_website">This Site's Code</a>
+          </p>
+        </div>
+      </div>
+    </header>
 
     <section>
       <h2>👋🏻 Hi, I'm Tomer!</h2>
@@ -172,27 +225,41 @@
       </p>
 
       <h2>Projects 🛠️</h2>
+      
+      <!-- First Project Card -->
       <div class="project-card">
-        <p>My first first person shooter game:</p>
-        <video controls loop="" muted="" autoplay="">
+        <video controls loop muted autoplay>
           <source src="https://github.com/ttomer/portfolio_website/raw/refs/heads/dev/assets/FPS-Shooter.mov">
         </video>
+        <div class="project-overlay">
+          <h3>First-Person Shooter</h3>
+          <p>A challenging FPS game with unique levels and mechanics.</p>
+          <a href="#" class="view-project">View Project</a>
+        </div>
       </div>
 
+      <!-- Second Project Card -->
       <div class="project-card">
-        <h3>Load Time Optimizations 🛠️</h3>
-        <h3>Original Load time:</h3>
-        <video controls loop="" muted="" autoplay="">
+        <video controls loop muted autoplay>
           <source src="https://github.com/ttomer/portfolio_website/raw/refs/heads/dev/assets/original.mov">
         </video>
-        <h3>Async Load time:</h3>
-        <video controls loop="" muted="" autoplay="">
+        <div class="project-overlay">
+          <h3>Load Time Optimization</h3>
+          <p>Improving web performance with optimized loading times.</p>
+          <a href="#" class="view-project">View Optimization</a>
+        </div>
+      </div>
+
+      <!-- Third Project Card -->
+      <div class="project-card">
+        <video controls loop muted autoplay>
           <source src="https://github.com/ttomer/portfolio_website/raw/refs/heads/dev/assets/async.mov">
         </video>
-        <h3>Cached Async Load time:</h3>
-        <video controls loop="" muted="" autoplay="">
-          <source src="https://github.com/ttomer/portfolio_website/raw/refs/heads/dev/assets/async%20cached.mov">
-        </video>
+        <div class="project-overlay">
+          <h3>Async Load Time</h3>
+          <p>Demonstrating reduced load time with async methods.</p>
+          <a href="#" class="view-project">View Optimization</a>
+        </div>
       </div>
     </section>
 
@@ -203,110 +270,110 @@
 
   <script src="static/js/scale.fix.js"></script>
   <script>
-particlesJS('particles-js', {
-  "particles": {
-    "number": {
-      "value": 80,
-      "density": {
-        "enable": true,
-        "value_area": 800
-      }
-    },
-    "color": {
-      "value": "#8ab4f8"
-    },
-    "shape": {
-      "type": "circle",
-      "stroke": {
-        "width": 0,
-        "color": "#000000"
-      },
-      "polygon": {
-        "nb_sides": 5
-      }
-    },
-    "opacity": {
-      "value": 0.5,
-      "random": false,
-      "anim": {
-        "enable": false,
-        "speed": 1,
-        "opacity_min": 0.1,
-        "sync": false
-      }
-    },
-    "size": {
-      "value": 3,
-      "random": true,
-      "anim": {
-        "enable": false,
-        "speed": 40,
-        "size_min": 0.1,
-        "sync": false
-      }
-    },
-    "line_linked": {
-      "enable": true,
-      "distance": 150,
-      "color": "#8ab4f8",
-      "opacity": 0.4,
-      "width": 1
-    },
-    "move": {
-      "enable": true,
-      "speed": 2,
-      "direction": "none",
-      "random": false,
-      "straight": false,
-      "out_mode": "out",
-      "attract": {
-        "enable": false,
-        "rotateX": 600,
-        "rotateY": 1200
-      }
-    }
-  },
-  "interactivity": {
-    "detect_on": "canvas",
-    "events": {
-      "onhover": {
-        "enable": true,
-        "mode": "repulse"
-      },
-      "onclick": {
-        "enable": true,
-        "mode": "push"
-      },
-      "resize": true
-    },
-    "modes": {
-      "grab": {
-        "distance": 400,
+    particlesJS('particles-js', {
+      "particles": {
+        "number": {
+          "value": 80,
+          "density": {
+            "enable": true,
+            "value_area": 800
+          }
+        },
+        "color": {
+          "value": "#8ab4f8"
+        },
+        "shape": {
+          "type": "circle",
+          "stroke": {
+            "width": 0,
+            "color": "#000000"
+          },
+          "polygon": {
+            "nb_sides": 5
+          }
+        },
+        "opacity": {
+          "value": 0.5,
+          "random": false,
+          "anim": {
+            "enable": false,
+            "speed": 1,
+            "opacity_min": 0.1,
+            "sync": false
+          }
+        },
+        "size": {
+          "value": 3,
+          "random": true,
+          "anim": {
+            "enable": false,
+            "speed": 40,
+            "size_min": 0.1,
+            "sync": false
+          }
+        },
         "line_linked": {
-          "opacity": 1
+          "enable": true,
+          "distance": 150,
+          "color": "#8ab4f8",
+          "opacity": 0.4,
+          "width": 1
+        },
+        "move": {
+          "enable": true,
+          "speed": 2,
+          "direction": "none",
+          "random": false,
+          "straight": false,
+          "out_mode": "out",
+          "attract": {
+            "enable": false,
+            "rotateX": 600,
+            "rotateY": 1200
+          }
         }
       },
-      "bubble": {
-        "distance": 400,
-        "size": 40,
-        "duration": 2,
-        "opacity": 8,
-        "speed": 3
+      "interactivity": {
+        "detect_on": "canvas",
+        "events": {
+          "onhover": {
+            "enable": true,
+            "mode": "repulse"
+          },
+          "onclick": {
+            "enable": true,
+            "mode": "push"
+          },
+          "resize": true
+        },
+        "modes": {
+          "grab": {
+            "distance": 400,
+            "line_linked": {
+              "opacity": 1
+            }
+          },
+          "bubble": {
+            "distance": 400,
+            "size": 40,
+            "duration": 2,
+            "opacity": 8,
+            "speed": 3
+          },
+          "repulse": {
+            "distance": 100,
+            "duration": 0.4
+          },
+          "push": {
+            "particles_nb": 4
+          },
+          "remove": {
+            "particles_nb": 2
+          }
+        }
       },
-      "repulse": {
-        "distance": 100,
-        "duration": 0.4
-      },
-      "push": {
-        "particles_nb": 4
-      },
-      "remove": {
-        "particles_nb": 2
-      }
-    }
-  },
-  "retina_detect": true
-});
+      "retina_detect": true
+    });
   </script>
 </body>
 
