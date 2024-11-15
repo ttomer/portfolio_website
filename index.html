@@ -205,52 +205,46 @@
     transition: color 0.3s, transform 0.3s;
   }
 
-  /* Main Cursor Dot */
-#cursor-dot {
+  /* Container for Particle Trail */
+#particle-trail {
   position: fixed;
-  width: 8px;
-  height: 8px;
-  background-color: #ffdeb9;
-  border-radius: 50%;
+  top: 0;
+  left: 0;
   pointer-events: none;
   z-index: 10000;
-  transform: translate(-50%, -50%);
 }
 
-/* Cursor Halo */
-#cursor-halo {
-  position: fixed;
-  width: 40px;
-  height: 40px;
+/* Individual Particle Styling */
+.particle {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #8ab4f8; /* Adjust this color as desired */
   border-radius: 50%;
-  background: linear-gradient(45deg, #ff007f, #ffdeb9, #8ab4f8, #00ffd9);
-  background-size: 200% 200%;
-  animation: gradient-shift 3s infinite alternate;
   pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  animation: particle-fade 1s ease forwards;
+  opacity: 0.8;
+  transform: scale(1);
 }
 
-/* Gradient Shift Animation */
-@keyframes gradient-shift {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 100% 50%; }
-}
-
-/* Hover Effect - Expands and Intensifies Halo */
-.hover-effect #cursor-halo {
-  transform: translate(-50%, -50%) scale(1.5);
-  box-shadow: 0 0 15px 10px rgba(255, 222, 185, 0.6);
+/* Particle Fade Out Animation */
+@keyframes particle-fade {
+  0% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
 }
 
 </style>
 
 <body>
   <div id="particles-js"></div>
-  <div id="cursor-dot"></div>
-  <div id="cursor-halo"></div>
-  
+  <div id="particle-trail"></div>
+
   <div class="wrapper">
     <header>
       <!-- Animated Intro Section -->
@@ -483,28 +477,29 @@
       }
     }
   </script>
-  <script>// Main Cursor Dot and Halo
-    const cursorDot = document.getElementById("cursor-dot");
-    const cursorHalo = document.getElementById("cursor-halo");
-    
-    // Track Mouse Movement
+  <script>const particleContainer = document.getElementById("particle-trail");
+
     document.addEventListener("mousemove", (e) => {
-      cursorDot.style.left = `${e.clientX}px`;
-      cursorDot.style.top = `${e.clientY}px`;
-      cursorHalo.style.left = `${e.clientX}px`;
-      cursorHalo.style.top = `${e.clientY}px`;
-    });
+      // Create a new particle element
+      const particle = document.createElement("div");
+      particle.classList.add("particle");
     
-    // Apply Hover Effect to Interactive Elements
-    const hoverElements = document.querySelectorAll("a, button, .view-project, .propic img");
+      // Position the particle at the cursor location
+      particle.style.left = `${e.clientX}px`;
+      particle.style.top = `${e.clientY}px`;
     
-    hoverElements.forEach((el) => {
-      el.addEventListener("mouseenter", () => {
-        cursorHalo.classList.add("hover-effect");
-      });
-      el.addEventListener("mouseleave", () => {
-        cursorHalo.classList.remove("hover-effect");
-      });
+      // Apply random movement to create an organic feel
+      const size = Math.random() * 8 + 4; // Random size between 4px and 12px
+      particle.style.width = `${size}px`;
+      particle.style.height = `${size}px`;
+    
+      // Append the particle to the container
+      particleContainer.appendChild(particle);
+    
+      // Remove particle after animation
+      setTimeout(() => {
+        particle.remove();
+      }, 1000); // Matches the 1s animation duration
     });
     </script>
 </body>
