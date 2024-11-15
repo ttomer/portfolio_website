@@ -379,7 +379,7 @@
         <div class="project-overlay">
           <h3>First-Person Shooter</h3>
           <p>A challenging FPS game with unique levels and mechanics.</p>
-          <a href="#" class="view-project" onclick="openModal('First-Person Shooter', 'An immersive FPS game with unique gameplay.', 'https://github.com/ttomer/portfolio_website/raw/refs/heads/dev/assets/FPS-Shooter.mov')">View Project</a>
+          <a href="#" class="view-project" onclick="openModal('First-Person Shooter', 'An immersive FPS game with unique gameplay.', 'https://github.com/ttomer/portfolio_website/raw/refs/heads/dev/assets/FPS-Shooter.mov', false)">View Project</a>
         </div>
       </div>
 
@@ -393,7 +393,7 @@
         <div class="project-overlay">
           <h3>Unoptimized Load Time</h3>
           <p>Load time before optimization for reference.</p>
-          <a href="#" class="view-project" onclick="openModal('Unoptimized Load Time', 'Load time before optimization', 'https://github.com/ttomer/portfolio_website/raw/refs/heads/dev/assets/original.mov')">View Before Optimization</a>
+          <a href="#" class="view-project" onclick="openModal('Unoptimized Load Time', 'Load time before optimization', 'https://github.com/ttomer/portfolio_website/raw/refs/heads/dev/assets/original.mov', true)">View Before Optimization</a>
         </div>
       </div>
       <!-- Third Project Card -->
@@ -404,7 +404,7 @@
         <div class="project-overlay">
           <h3>Async Load Time</h3>
           <p>Demonstrating reduced load time with async methods.</p>
-          <a href="#" class="view-project" onclick="openModal('Async Load Time', 'Demonstrating reduced load time with async methods.', 'https://github.com/ttomer/portfolio_website/raw/refs/heads/dev/assets/async.mov')">View Optimization</a>
+          <a href="#" class="view-project" onclick="openModal('Async Load Time', 'Demonstrating reduced load time with async methods.', 'https://github.com/ttomer/portfolio_website/raw/refs/heads/dev/assets/async.mov', true)">View Optimization</a>
         </div>
       </div>
 
@@ -416,7 +416,7 @@
               <div class="project-overlay">
                 <h3>Cached Async Load Time</h3>
                 <p>Demonstrating reduced load time with cached async methods.</p>
-                <a href="#" class="view-project" onclick="openModal('Cached Async Load Time', 'Demonstrating reduced load time with cached async methods.', 'https://github.com/ttomer/portfolio_website/raw/refs/heads/dev/assets/async%20cached.mov')">View Optimization</a>
+                <a href="#" class="view-project" onclick="openModal('Cached Async Load Time', 'Demonstrating reduced load time with cached async methods.', 'https://github.com/ttomer/portfolio_website/raw/refs/heads/dev/assets/async%20cached.mov', true)">View Optimization</a>
               </div>
             </div>
 
@@ -434,8 +434,11 @@
       <h3 id="modalTitle">Project Title</h3>
       <p id="modalDescription">Here you can add more details about the project.</p>
       <video id="modalVideo" controls loop muted autoplay></video>
+      <span id="modalTimer" style="display: none;">Timer: 0s</span> <!-- Timer element -->
     </div>
   </div>
+  
+
 
   <script src="static/js/scale.fix.js"></script>
   <script>
@@ -544,23 +547,51 @@
       "retina_detect": true
     });
 
-    function openModal(title, description, videoSrc) {
-      document.getElementById('modalTitle').innerText = title;
-      document.getElementById('modalDescription').innerText = description;
-      document.getElementById('modalVideo').src = videoSrc;
-      document.getElementById('projectModal').style.display = 'block';
-    }
+    let timer; // Variable to store the setInterval reference
+let timerCount = 0; // Initialize the timer count
 
-    function closeModal() {
-      document.getElementById('projectModal').style.display = 'none';
-      document.getElementById('modalVideo').src = ''; // Stop video playback when closed
-    }
+function startTimer() {
+  timerCount = 0; // Reset timer to 0 every time the modal opens
+  document.getElementById('modalTimer').innerText = `Timer: ${timerCount}s`;
+  document.getElementById('modalTimer').style.display = 'block'; // Show timer
+  timer = setInterval(() => {
+    timerCount++;
+    document.getElementById('modalTimer').innerText = `Timer: ${timerCount}s`;
+  }, 1000); // Update every second
+}
 
-    window.onclick = function(event) {
-      if (event.target == document.getElementById('projectModal')) {
-        closeModal();
-      }
-    }
+function stopTimer() {
+  clearInterval(timer); // Stop the timer
+  document.getElementById('modalTimer').style.display = 'none'; // Hide timer
+}
+
+function openModal(title, description, videoSrc, hasTimer = false) {
+  document.getElementById('modalTitle').innerText = title;
+  document.getElementById('modalDescription').innerText = description;
+  document.getElementById('modalVideo').src = videoSrc;
+  document.getElementById('projectModal').style.display = 'block';
+
+  if (hasTimer) {
+    startTimer(); // Start the timer if hasTimer is true
+  } else {
+    document.getElementById('modalTimer').style.display = 'none'; // Ensure timer is hidden if hasTimer is false
+  }
+}
+
+function closeModal() {
+  document.getElementById('projectModal').style.display = 'none';
+  document.getElementById('modalVideo').src = ''; // Stop video playback
+  stopTimer(); // Stop the timer when the modal closes
+}
+
+// Close the modal when clicking outside of it
+window.onclick = function(event) {
+  if (event.target == document.getElementById('projectModal')) {
+    closeModal();
+  }
+}
+
+
   </script>
   <script>const particleContainer = document.getElementById("particle-trail");
 
