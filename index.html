@@ -208,37 +208,40 @@
   /* Main Cursor Dot */
 #cursor-dot {
   position: fixed;
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   background-color: #ffdeb9;
   border-radius: 50%;
   pointer-events: none;
   z-index: 10000;
-  transition: transform 0.1s ease;
   transform: translate(-50%, -50%);
 }
 
-/* Particle Styling */
-.particle {
-  position: absolute;
-  width: 4px;
-  height: 4px;
-  background-color: #8ab4f8;
+/* Cursor Halo */
+#cursor-halo {
+  position: fixed;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
+  background: linear-gradient(45deg, #ff007f, #ffdeb9, #8ab4f8, #00ffd9);
+  background-size: 200% 200%;
+  animation: gradient-shift 3s infinite alternate;
   pointer-events: none;
-  animation: explode 0.5s ease forwards;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-/* Explosion Animation */
-@keyframes explode {
-  0% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  100% {
-    transform: translate(var(--x), var(--y)) scale(0.6);
-    opacity: 0;
-  }
+/* Gradient Shift Animation */
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+/* Hover Effect - Expands and Intensifies Halo */
+.hover-effect #cursor-halo {
+  transform: translate(-50%, -50%) scale(1.5);
+  box-shadow: 0 0 15px 10px rgba(255, 222, 185, 0.6);
 }
 
 </style>
@@ -246,7 +249,7 @@
 <body>
   <div id="particles-js"></div>
   <div id="cursor-dot"></div>
-  <div id="particle-container"></div>
+  <div id="cursor-halo"></div>
   
   <div class="wrapper">
     <header>
@@ -480,39 +483,28 @@
       }
     }
   </script>
-  <script>// Main Cursor Dot
+  <script>// Main Cursor Dot and Halo
     const cursorDot = document.getElementById("cursor-dot");
-    const particleContainer = document.getElementById("particle-container");
+    const cursorHalo = document.getElementById("cursor-halo");
     
-    // Follow the Mouse Movement
+    // Track Mouse Movement
     document.addEventListener("mousemove", (e) => {
       cursorDot.style.left = `${e.clientX}px`;
       cursorDot.style.top = `${e.clientY}px`;
+      cursorHalo.style.left = `${e.clientX}px`;
+      cursorHalo.style.top = `${e.clientY}px`;
     });
     
-    // Generate Particle Explosion on Click
-    document.addEventListener("click", (e) => {
-      const particleCount = 15; // Number of particles per explosion
+    // Apply Hover Effect to Interactive Elements
+    const hoverElements = document.querySelectorAll("a, button, .view-project, .propic img");
     
-      for (let i = 0; i < particleCount; i++) {
-        // Create particle element
-        const particle = document.createElement("div");
-        particle.classList.add("particle");
-    
-        // Set initial position and random trajectory
-        particle.style.left = `${e.clientX}px`;
-        particle.style.top = `${e.clientY}px`;
-        const angle = Math.random() * 2 * Math.PI;
-        const radius = Math.random() * 50;
-        particle.style.setProperty("--x", `${Math.cos(angle) * radius}px`);
-        particle.style.setProperty("--y", `${Math.sin(angle) * radius}px`);
-    
-        // Append particle to container and remove it after animation
-        particleContainer.appendChild(particle);
-        setTimeout(() => {
-          particle.remove();
-        }, 500);
-      }
+    hoverElements.forEach((el) => {
+      el.addEventListener("mouseenter", () => {
+        cursorHalo.classList.add("hover-effect");
+      });
+      el.addEventListener("mouseleave", () => {
+        cursorHalo.classList.remove("hover-effect");
+      });
     });
     </script>
 </body>
