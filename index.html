@@ -9,7 +9,6 @@
   <link rel="stylesheet" href="static/css/styles.css">
   <link rel="stylesheet" href="static/css/pygment_trac.css">
   <link rel="stylesheet" href="static/external/font-awesome/css/font-awesome.min.css">
-
   <meta name="viewport" content="width=device-width">
   <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
 </head>
@@ -142,32 +141,9 @@
     color: #1a1a2e;
   }
 
-  /* Footer Styling */
-  footer {
-    background-color: #0d0d1a;
-    color: #b0b0b0;
-    padding: 1rem;
-    text-align: center;
-    font-size: 0.9em;
-    border-top: 1px solid #444;
-  }
-
-  /* Social Media Icons Styling */
-  .bio a i {
-    font-size: 26px;
-    color: #8ab4f8;
-    padding-left: 1rem;
-  }
-
-  .bio a i:hover {
-    color: #ffdeb9;
-    transform: scale(1.1);
-    transition: color 0.3s, transform 0.3s;
-  }
-
-    /* Modal Styling */
-    .modal {
-    display: none; /* Hidden by default */
+  /* Modal Styling */
+  .modal {
+    display: none;
     position: fixed;
     z-index: 10;
     left: 0;
@@ -204,6 +180,29 @@
 
   .close:hover {
     color: #ffdeb9;
+  }
+
+  /* Footer Styling */
+  footer {
+    background-color: #0d0d1a;
+    color: #b0b0b0;
+    padding: 1rem;
+    text-align: center;
+    font-size: 0.9em;
+    border-top: 1px solid #444;
+  }
+
+  /* Social Media Icons Styling */
+  .bio a i {
+    font-size: 26px;
+    color: #8ab4f8;
+    padding-left: 1rem;
+  }
+
+  .bio a i:hover {
+    color: #ffdeb9;
+    transform: scale(1.1);
+    transition: color 0.3s, transform 0.3s;
   }
 </style>
 
@@ -255,10 +254,9 @@
       <p>
         I've worn many hats - Software Engineer, QA, Automation Engineer, and today I work on cool personal projects and courses.
       </p>
-
       <h3>Balance 🧘🏼</h3>
       <p>
-        I'm all about work/life balance and love exploring different cultures through travel! As well as dabble in video games, 
+        I'm all about work/life balance and love exploring different cultures through travel! As well as dabble in video games,
         specifically real-time strategy games.
       </p>
       <p>
@@ -266,8 +264,8 @@
       </p>
 
       <h2>Projects 🛠️</h2>
-      
-      <!-- First Project Card -->
+
+      <!-- First Project Card with Modal Trigger -->
       <div class="project-card">
         <video controls loop muted autoplay>
           <source src="https://github.com/ttomer/portfolio_website/raw/refs/heads/dev/assets/FPS-Shooter.mov">
@@ -278,7 +276,6 @@
           <a href="#" class="view-project" onclick="openModal('First-Person Shooter', 'An immersive FPS game with unique gameplay.', 'https://github.com/ttomer/portfolio_website/raw/refs/heads/dev/assets/FPS-Shooter.mov')">View Project</a>
         </div>
       </div>
-
 
       <!-- Second Project Card -->
       <div class="project-card">
@@ -291,7 +288,6 @@
           <a href="#" class="view-project" onclick="openModal('Load Time Optimization', 'Improving web performance with optimized loading times.', 'https://github.com/ttomer/portfolio_website/raw/refs/heads/dev/assets/original.mov')">View Optimization</a>
         </div>
       </div>
-
       <!-- Third Project Card -->
       <div class="project-card">
         <video controls loop muted autoplay>
@@ -309,6 +305,7 @@
       <p><small>tomer (dash) dev (dot) xyz</small></p>
     </footer>
   </div>
+
   <!-- Modal Structure -->
   <div id="projectModal" class="modal">
     <div class="modal-content">
@@ -320,28 +317,6 @@
   </div>
 
   <script src="static/js/scale.fix.js"></script>
-  <script>
-    particlesJS('particles-js', { /* Particle settings */ });
-
-    function openModal(title, description, videoSrc) {
-      document.getElementById('modalTitle').innerText = title;
-      document.getElementById('modalDescription').innerText = description;
-      document.getElementById('modalVideo').src = videoSrc;
-      document.getElementById('projectModal').style.display = 'block';
-    }
-
-    function closeModal() {
-      document.getElementById('projectModal').style.display = 'none';
-      document.getElementById('modalVideo').src = ''; // Stop video playback when closed
-    }
-
-    window.onclick = function(event) {
-      if (event.target == document.getElementById('projectModal')) {
-        closeModal();
-      }
-    }
-  </script>
-
   <script>
     particlesJS('particles-js', {
       "particles": {
@@ -447,6 +422,24 @@
       },
       "retina_detect": true
     });
+
+    function openModal(title, description, videoSrc) {
+      document.getElementById('modalTitle').innerText = title;
+      document.getElementById('modalDescription').innerText = description;
+      document.getElementById('modalVideo').src = videoSrc;
+      document.getElementById('projectModal').style.display = 'block';
+    }
+
+    function closeModal() {
+      document.getElementById('projectModal').style.display = 'none';
+      document.getElementById('modalVideo').src = ''; // Stop video playback when closed
+    }
+
+    window.onclick = function(event) {
+      if (event.target == document.getElementById('projectModal')) {
+        closeModal();
+      }
+    }
   </script>
 </body>
 
