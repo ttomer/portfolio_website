@@ -6,6 +6,8 @@
     <title>Tomer Torgeman | Game Developer & Software Engineer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
     <style>
         :root {
             --neon-blue: #00f3ff;
@@ -1202,6 +1204,390 @@
         tagElement.style.animationDelay = `${Math.random() * 2}s`;
         
         cloud.appendChild(tagElement);
+    });
+</script>
+<!-- Add this after the skills section -->
+
+<style>
+    /* Contact Section Styles */
+    .contact-section {
+        min-height: 100vh;
+        padding: 6rem 2rem;
+        position: relative;
+        background: linear-gradient(to bottom, rgba(157,0,255,0.05), rgba(0,0,0,0));
+    }
+
+    .contact-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .contact-title {
+        text-align: center;
+        font-size: 3rem;
+        margin-bottom: 2rem;
+        background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+
+    .contact-subtitle {
+        text-align: center;
+        color: #fff;
+        font-size: 1.2rem;
+        margin-bottom: 4rem;
+        opacity: 0.8;
+    }
+
+    .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        margin-bottom: 4rem;
+    }
+
+    @media (max-width: 768px) {
+        .contact-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .contact-form {
+        background: rgba(255,255,255,0.05);
+        backdrop-filter: blur(10px);
+        padding: 2rem;
+        border-radius: 20px;
+        border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+
+    .form-label {
+        display: block;
+        color: #fff;
+        margin-bottom: 0.5rem;
+        font-size: 0.9rem;
+    }
+
+    .form-input {
+        width: 100%;
+        padding: 0.8rem 1rem;
+        background: rgba(255,255,255,0.1);
+        border: 1px solid rgba(255,255,255,0.2);
+        border-radius: 10px;
+        color: #fff;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+    }
+
+    .form-input:focus {
+        outline: none;
+        border-color: var(--neon-blue);
+        box-shadow: 0 0 15px rgba(0,243,255,0.3);
+    }
+
+    textarea.form-input {
+        min-height: 150px;
+        resize: vertical;
+    }
+
+    .submit-btn {
+        width: 100%;
+        padding: 1rem;
+        background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+        border: none;
+        border-radius: 10px;
+        color: #fff;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .submit-btn::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,0.2),
+            transparent
+        );
+        transition: 0.5s;
+    }
+
+    .submit-btn:hover::before {
+        left: 100%;
+    }
+
+    .contact-info {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .contact-card {
+        background: rgba(255,255,255,0.05);
+        backdrop-filter: blur(10px);
+        padding: 1.5rem;
+        border-radius: 15px;
+        border: 1px solid rgba(255,255,255,0.1);
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+
+    .contact-card:hover {
+        transform: translateY(-5px);
+        background: rgba(255,255,255,0.1);
+    }
+
+    .contact-icon {
+        width: 50px;
+        height: 50px;
+        background: var(--dark-bg);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid var(--neon-blue);
+        box-shadow: 0 0 15px rgba(0,243,255,0.3);
+    }
+
+    .contact-icon i {
+        color: var(--neon-blue);
+        font-size: 1.2rem;
+    }
+
+    .contact-info-content h3 {
+        color: #fff;
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .contact-info-content p {
+        color: rgba(255,255,255,0.8);
+        font-size: 0.9rem;
+    }
+
+    /* Social Links */
+    .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        margin-top: 3rem;
+    }
+
+    .social-link {
+        width: 50px;
+        height: 50px;
+        background: rgba(255,255,255,0.05);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid rgba(255,255,255,0.1);
+        transition: all 0.3s ease;
+    }
+
+    .social-link i {
+        color: var(--neon-blue);
+        font-size: 1.2rem;
+        transition: all 0.3s ease;
+    }
+
+    .social-link:hover {
+        background: var(--neon-blue);
+        transform: translateY(-5px);
+    }
+
+    .social-link:hover i {
+        color: var(--dark-bg);
+    }
+
+    /* Success Message Animation */
+    @keyframes slideIn {
+        0% { transform: translateY(-100%); opacity: 0; }
+        100% { transform: translateY(0); opacity: 1; }
+    }
+
+    .success-message {
+        display: none;
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 1rem 2rem;
+        background: rgba(0,255,0,0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(0,255,0,0.2);
+        border-radius: 10px;
+        color: #fff;
+        animation: slideIn 0.5s ease forwards;
+    }
+</style>
+
+<section class="contact-section">
+    <div class="contact-container">
+        <h2 class="contact-title">Get In Touch</h2>
+        <p class="contact-subtitle">Have a project in mind? Let's create something amazing together.</p>
+
+        <div class="contact-grid">
+            <div class="contact-form">
+                <form id="contact-form">
+                    <div class="form-group">
+                        <label class="form-label">Name</label>
+                        <input type="text" id="user_name" name="user_name" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" id="user_email" name="user_email" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Subject</label>
+                        <input type="text" id="subject" name="subject" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Message</label>
+                        <textarea id="message" name="message" class="form-input" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+
+            <div class="contact-info">
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-info-content">
+                        <h3>Email</h3>
+                        <p>contact@tomertorgeman.com</p>
+                    </div>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="contact-info-content">
+                        <h3>Location</h3>
+                        <p>Tel Aviv, Israel</p>
+                    </div>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="contact-info-content">
+                        <h3>Working Hours</h3>
+                        <p>Mon - Fri: 9:00 AM - 6:00 PM</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="social-links">
+            <a href="#" class="social-link">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="#" class="social-link">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="#" class="social-link">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="social-link">
+                <i class="fab fa-instagram"></i>
+            </a>
+        </div>
+    </div>
+
+    <div class="success-message" id="success-message">
+        Message sent successfully!
+    </div>
+</section>
+
+<!-- Update the contact form JavaScript code -->
+<script>
+    // Initialize EmailJS with your public key
+    (function() {
+        emailjs.init("BWgW4SB4ZhnT3OjvF"); // Replace with your EmailJS public key
+    })();
+
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Show loading state
+        const submitBtn = this.querySelector('.submit-btn');
+        const originalBtnText = submitBtn.textContent;
+        submitBtn.textContent = 'Sending...';
+        submitBtn.disabled = true;
+
+        // Gather form data
+        // Gather form data
+    const formData = {
+        name: document.getElementById('user_name').value,
+        email: document.getElementById('user_email').value,
+        subject: document.getElementById('subject').value,
+        message: document.getElementById('message').value
+    };
+
+        // Send email using EmailJS
+        emailjs.send(
+            'service_ho6xoq3', // Replace with your EmailJS service ID
+            'template_s5kfuer', // Replace with your EmailJS template ID
+            {
+                from_name: formData.name,
+                from_email: formData.email,
+                subject: formData.subject,
+                message: formData.message,
+            }
+        ).then(
+            function(response) {
+                // Show success message
+                const successMessage = document.getElementById('success-message');
+                successMessage.style.display = 'block';
+                successMessage.textContent = 'Message sent successfully!';
+                
+                // Reset form and button
+                document.getElementById('contact-form').reset();
+                submitBtn.textContent = originalBtnText;
+                submitBtn.disabled = false;
+
+                // Hide success message after 3 seconds
+                setTimeout(() => {
+                    successMessage.style.display = 'none';
+                }, 3000);
+            },
+            function(error) {
+                // Show error message
+                const successMessage = document.getElementById('success-message');
+                successMessage.style.display = 'block';
+                successMessage.style.background = 'rgba(255,0,0,0.1)';
+                successMessage.style.border = '1px solid rgba(255,0,0,0.2)';
+                successMessage.textContent = 'Failed to send message. Please try again.';
+                
+                // Reset button
+                submitBtn.textContent = originalBtnText;
+                submitBtn.disabled = false;
+
+                // Hide error message after 3 seconds
+                setTimeout(() => {
+                    successMessage.style.display = 'none';
+                }, 3000);
+            }
+        );
     });
 </script>
 </body>
