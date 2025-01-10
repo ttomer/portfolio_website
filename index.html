@@ -1,790 +1,369 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="chrome=1">
-        <title>Tomer Torgeman | Software Engineer</title>
-        <link rel="stylesheet" href="static/css/styles.css">
-        <link rel="stylesheet" href="static/css/pygment_trac.css">
-        <link rel="stylesheet" href="static/external/font-awesome/css/font-awesome.min.css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css">
-        <meta name="viewport" content="width=device-width">
-        <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
-    </head>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tomer Torgeman | Game Developer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css">
     <style>
-        /* Gradient Background */
-        body {
-            background: linear-gradient(to bottom, #1a1a2e, #0f0f1f);
-            color: #e0e0e0;
-            font-family: Arial, sans-serif;
+        :root {
+            --primary-color: #2a2f4f;
+            --accent-color: #917fb3;
+            --text-color: #e5e5e5;
+            --hover-color: #fde2f3;
         }
 
-        /* Particle Background Container */
+        body {
+            background: linear-gradient(135deg, var(--primary-color), #1a1a2e);
+            color: var(--text-color);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            line-height: 1.6;
+        }
+
         #particles-js {
             position: fixed;
             width: 100%;
             height: 100%;
             z-index: -1;
-            top: 0;
-            left: 0;
         }
 
-        /* Typing Animation */
-        .intro {
-            font-size: 2rem;
-            /* Default size */
+        .wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Header & Navigation */
+        header {
+            padding: 2rem 0;
             text-align: center;
-            color: #8ab4f8;
-            margin-top: 2rem;
-            white-space: nowrap;
-            overflow: hidden;
-            border-right: 3px solid #8ab4f8;
-            display: inline-block;
-            animation: typing 6s steps(40, end), blink-caret 0.75s step-end infinite;
         }
 
-        /* Adjust font size for smaller screens */
-        @media (max-width: 768px) {
-            .intro {
-                font-size: 1.5rem;
-                /* Adjust font size for tablets */
-            }
+        .profile-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
         }
 
-        @media (max-width: 480px) {
-            .intro {
-                font-size: 1.2rem;
-                /* Adjust font size for mobile */
-            }
-        }
-
-        @keyframes typing {
-            from {
-                width: 0;
-            }
-
-            to {
-                width: 100%;
-            }
-        }
-
-        @keyframes blink-caret {
-            50% {
-                border-color: transparent;
-            }
-        }
-
-        /* Profile Picture Styling */
-        .propic img {
+        .profile-image {
+            width: 200px;
+            height: 200px;
             border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid #ffdeb9;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+            border: 4px solid var(--accent-color);
+            box-shadow: 0 0 20px rgba(145, 127, 179, 0.3);
+            transition: transform 0.3s ease;
         }
 
-        /* Section Header Styling */
-        section h2, section h3 {
-            color: #8ab4f8;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid #8ab4f8;
-            margin-top: 2rem;
-            font-size: 1.5rem;
-            
+        .profile-image:hover {
+            transform: scale(1.05);
         }
 
-        /* Project Card with Hover Effect */
+        /* Game Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
         .project-card {
-            position: relative;
+            background: rgba(42, 47, 79, 0.8);
+            border-radius: 15px;
             overflow: hidden;
-            border-radius: 8px;
-            transition: transform 0.3s;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
         .project-card:hover {
-            transform: scale(1.05);
+            transform: translateY(-10px);
         }
 
         .project-card video {
             width: 100%;
-            border-radius: 8px;
+            height: 200px;
+            object-fit: cover;
         }
 
-        .project-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            color: #ffffff;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
+        .project-info {
+            padding: 1.5rem;
+        }
+
+        .project-info h3 {
+            color: var(--accent-color);
+            margin: 0 0 1rem 0;
+        }
+
+        /* Skills Section */
+        .skills-section {
+            background: rgba(42, 47, 79, 0.5);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 3rem 0;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .skill-item {
             text-align: center;
-            padding: 20px;
-            box-sizing: border-box;
+            padding: 1rem;
+            background: rgba(145, 127, 179, 0.1);
+            border-radius: 10px;
+            transition: background 0.3s ease;
         }
 
-        .project-card:hover .project-overlay {
-            opacity: 1;
+        .skill-item:hover {
+            background: rgba(145, 127, 179, 0.2);
         }
 
-        .project-overlay h3 {
-            margin: 0;
+        /* Social Links */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .social-links a {
+            color: var(--accent-color);
             font-size: 1.5rem;
-            color: #8ab4f8;
+            transition: color 0.3s ease;
         }
 
-        .project-overlay p {
-            margin: 10px 0;
+        .social-links a:hover {
+            color: var(--hover-color);
         }
 
-        .view-project {
-            color: #ffdeb9;
-            text-decoration: none;
-            border: 1px solid #ffdeb9;
-            padding: 8px 16px;
-            border-radius: 4px;
-            transition: background-color 0.3s, color 0.3s;
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .wrapper {
+                padding: 1rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
-        .view-project:hover {
-            background-color: #ffdeb9;
-            color: #1a1a2e;
+        /* Animation Classes */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.6s ease forwards;
+        }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* Modal Styling */
         .modal {
             display: none;
             position: fixed;
-            z-index: 10;
-            left: 0;
             top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            overflow: auto;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
         }
 
         .modal-content {
-            background-color: #1a1a2e;
-            margin: 10% auto;
-            padding: 20px;
-            border-radius: 8px;
-            max-width: 1000px;
-            color: #e0e0e0;
-            text-align: center;
+            position: relative;
+            max-width: 800px;
+            margin: 2rem auto;
+            background: var(--primary-color);
+            padding: 2rem;
+            border-radius: 15px;
         }
 
-        .modal-content video {
-            width: 100%;
-            border-radius: 8px;
-            margin-top: 10px;
-        }
-
-        .close {
-            color: #ffffff;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .close:hover {
-            color: #ffdeb9;
-        }
-
-        /* Footer Styling */
-        footer {
-            background-color: #0d0d1a;
-            color: #b0b0b0;
-            padding: 1rem;
-            text-align: center;
-            font-size: 0.9em;
-            border-top: 1px solid #444;
-        }
-
-        /* Social Media Icons Styling */
-        .bio a i {
-            font-size: 26px;
-            color: #8ab4f8;
-            padding-left: 1rem;
-        }
-
-        .bio a i:hover {
-            color: #ffdeb9;
-            transform: scale(1.1);
-            transition: color 0.3s, transform 0.3s;
-        }
-
-        /* Container for Particle Trail */
-        #particle-trail {
-            position: fixed;
-            top: 0;
-            left: 0;
-            pointer-events: none;
-            z-index: 10000;
-        }
-
-        /* Individual Particle Styling */
-        .particle {
+        .close-modal {
             position: absolute;
-            width: 10px;
-            height: 10px;
-            background-color: #8ab4f8;
-            /* Adjust this color as desired */
-            border-radius: 50%;
-            pointer-events: none;
-            animation: particle-fade 1s ease forwards;
-            opacity: 0.8;
-            transform: scale(1);
-        }
-
-        /* Particle Fade Out Animation */
-        @keyframes particle-fade {
-            0% {
-                opacity: 0.8;
-                transform: scale(1);
-            }
-
-            100% {
-                opacity: 0;
-                transform: scale(0.5);
-            }
-        }
-
-        /* Preloader Overlay */
-        #preloader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: linear-gradient(45deg, #0f0f1f, #1a1a2e, #4a4a6a, #2e2e3e);
-            background-size: 200% 200%;
-            animation: rotateBackground 5s linear infinite;
-            z-index: 9999;
-            transition: opacity 0.5s ease;
-        }
-
-        /* Loading Message Styling */
-        .loading-message {
-            font-size: 2rem;
-            color: #e0e0e0;
-            /* Slightly darker shade for better visibility */
-            font-weight: bold;
-            text-align: center;
-            animation: pulse 1s infinite alternate;
-        }
-
-        /* Fade-Out Effect for Preloader */
-        .fade-in {
-            opacity: 0;
-            animation: fadeIn 1s ease forwards;
-        }
-
-        /* Keyframe Animations */
-        /* Rotate the background gradient */
-        @keyframes rotateBackground {
-            0% {
-                background-position: 0% 50%;
-            }
-
-            50% {
-                background-position: 100% 50%;
-            }
-
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-
-        /* Pulse animation for the loading message */
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-                opacity: 1;
-            }
-
-            100% {
-                transform: scale(1.2);
-                opacity: 0.8;
-            }
-        }
-
-        /* Fade-In Effect for Main Content */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
-        }
-
-        /* ===========================+NEW */
-        @media (max-width: 768px) {
-            .flex-container {
-                flex-direction: column;
-                /* Stack the halves vertically */
-                align-items: center;
-                /* Center content horizontally */
-            }
-        }
-
-        .left-half {
-            flex: 0 0 100%;
-            /* Each half takes full width */
-            align-items: center;
-            justify-content: center;
-            padding: 0;
-            /* Remove side padding */
-            margin-bottom: 20px;
-            /* Add spacing between stacked halves */
-        }
-
-        .right-half {
-            flex: 0 0 100%;
-            /* Each half takes full width */
-            padding: 0;
-            /* Remove side padding */
-            margin-bottom: 20px;
-            /* Add spacing between stacked halves */
+            right: 1rem;
+            top: 1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-color);
         }
     </style>
-    <body>
-        <div id="particles-js"></div>
-        <div id="particle-trail"></div>
-        <div id="preloader">
-            <div class="loading-message">Welcome!</div>
-        </div>
-        <div class="wrapper">
-            <header>
-                <!-- Container for profile picture and bio section -->
-                <div class="flex-container">
-                    <!-- Animated Intro Section -->
-                    <div class="left-half">
-                        <section class="intro-section">
-                            <div class="intro">Hi, I'm Tomer | Software Engineer</div>
-                        </section>
-                        <div class="profile-section">
-                            <h1 class="propic">
-                                <a href="https://www.tomer-dev.xyz/">
-                                    <img src="static/img/e.jpg">
-                                </a>
-                            </h1>
-                        </div>
-                        <div class="bio-section">
-                            <p class="bio">
-                                <a href="https://github.com/ttomer" target="_blank" title="Opens in a new window">
-                                    <i class="fa fa-github" aria-hidden="true"></i>
-                                </a>
-                                <a href="https://www.linkedin.com/in/tomer-torgeman-a12494173" target="_blank" title="Opens in a new window">
-                                    <i class="fa fa-linkedin" aria-hidden="true"></i>
-                                </a>
-                                <a href="https://www.instagram.com/certified_jew_boy/" target="_blank" title="Opens in a new window">
-                                    <i class="fa fa-instagram" aria-hidden="true"></i>
-                                </a>
-                            </p>
-                            <p class="center">
-                                <a href="https://github.com/ttomer/portfolio_website">This Site's Code</a>
-                            </p>
-                        </div>
+</head>
+<body>
+    <div id="particles-js"></div>
+    
+    <div class="wrapper">
+        <header class="fade-up">
+            <div class="profile-section">
+                <img src="static/img/e.jpg" alt="Tomer Torgeman" class="profile-image">
+                <h1>Tomer Torgeman</h1>
+                <p class="subtitle">Game Developer & Software Engineer</p>
+                
+                <div class="social-links">
+                    <a href="https://github.com/ttomer" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/tomer-torgeman-a12494173" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.instagram.com/certified_jew_boy/" target="_blank"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <section class="about-section fade-up">
+                <h2>About Me</h2>
+                <p>Starting my journey in cybersecurity, I found my true passion in game development. I bring a unique perspective to game creation, combining security mindfulness with creative gameplay design. When I'm not coding, you'll find me exploring different cultures through travel or diving deep into strategy games.</p>
+            </section>
+
+            <section class="skills-section fade-up">
+                <h2>Technical Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <i class="fas fa-gamepad"></i>
+                        <h3>Game Development</h3>
+                        <p>Unreal Engine, Unity</p>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-code"></i>
+                        <h3>Programming</h3>
+                        <p>C++, C#, Blueprint</p>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Security</h3>
+                        <p>Game Security, Network</p>
                     </div>
                 </div>
-            </header>
-            <section>
-                <div class="right-half">
-                    <h2 data-aos="fade-up">👋🏻 Hi, I'm Tomer!</h2>
-                    <h3 data-aos="fade-up">Bio 🤔</h3>
-                    <p data-aos="fade-right">I started my journey in the cybersecurity industry and then moved into the gaming industry which is where I
-          have been since!
-        </p>
-                    <p data-aos="fade-right">I've worn many hats - Software Engineer, QA, Automation Engineer, and on the side I work on developing
-          personal projects and courses.
-        </p>
-                    <h3 data-aos="fade-up">Balance 🧘🏼</h3>
-                    <p data-aos="fade-right">I'm all about work/life balance and love exploring different cultures through travel! As well as dabble in
-          video games,
-          specifically real-time strategy games.
-        </p>
-                    <p data-aos="fade-right">Interested in my most recent projects? Take a look below at some cool games I have made:
-        </p>
-                    <h2 data-aos="fade-up">Projects 🛠️</h2>
-                    <!-- First Project Card with Modal Trigger -->
-                    <div class="project-card" data-aos="zoom-in">
-                        <video data-src="https://github.com/ttomer/portfolio_website/raw/refs/heads/dev/assets/FPS-Shooter.mov" loading="lazy" controls loop muted></video>
-                        <div class="project-overlay">
+            </section>
+
+            <section class="projects-section">
+                <h2>Featured Projects</h2>
+                <div class="projects-grid">
+                    <div class="project-card" data-aos="fade-up">
+                        <video data-src="https://github.com/ttomer/portfolio_website/raw/refs/heads/dev/assets/FPS-Shooter.mov" controls muted loop></video>
+                        <div class="project-info">
                             <h3>First-Person Shooter</h3>
-                            <p>A challenging FPS game with unique levels and mechanics.</p>
-                            <a href="#" class="view-project" onclick="openModal('First-Person Shooter', 'An immersive FPS game with unique gameplay.', 'https://github.com/ttomer/portfolio_website/raw/refs/heads/dev/assets/FPS-Shooter.mov', false)">View
-              Project</a>
+                            <p>A challenging FPS game featuring unique level design and dynamic combat mechanics.</p>
+                            <button onclick="openProjectModal('fps')" class="view-project">View Details</button>
                         </div>
                     </div>
-                    <div class="project-card" data-aos="zoom-in">
-                        <video data-src="https://github.com/ttomer/portfolio_website/raw/refs/heads/dev/assets/ToonTanks%20720p.mov" loading="lazy" controls loop muted></video>
-                        <div class="project-overlay">
+
+                    <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+                        <video data-src="https://github.com/ttomer/portfolio_website/raw/refs/heads/dev/assets/ToonTanks%20720p.mov" controls muted loop></video>
+                        <div class="project-info">
                             <h3>Toon Tanks</h3>
-                            <p>Third person Tank shooter where the aim is to destroy all your enemies (the turrets).</p>
-                            <a href="#" class="view-project" onclick="openModal('Toon Tanks', 'Third person Tank shooter where the aim is to destroy all your enemies (the turrets).', 'https://github.com/ttomer/portfolio_website/raw/refs/heads/dev/assets/ToonTanks%20720p.mov', false)">View
-              Project</a>
+                            <p>Third-person tank combat game with strategic turret-based gameplay.</p>
+                            <button onclick="openProjectModal('tanks')" class="view-project">View Details</button>
                         </div>
                     </div>
-                    <div class="project-card" data-aos="zoom-in">
-                        <video data-src="https://github.com/ttomer/portfolio_website/raw/refs/heads/dev/assets/cryptraider.mov" loading="lazy" controls loop muted></video>
-                        <div class="project-overlay">
+
+                    <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+                        <video data-src="https://github.com/ttomer/portfolio_website/raw/refs/heads/dev/assets/cryptraider.mov" controls muted loop></video>
+                        <div class="project-info">
                             <h3>Crypt Raider</h3>
-                            <p>A puzzle game where you explore a dungeon and try to find a bronze statue.</p>
-                            <a href="#" class="view-project" onclick="openModal('Crypt Raider', 'A puzzle game where you explore a dungeon and try to find a bronze statue.', 'https://github.com/ttomer/portfolio_website/raw/refs/heads/dev/assets/cryptraider.mov', false)">View
-              Project</a>
-                        </div>
-                    </div>
-                    <div class="project-card" data-aos="zoom-in">
-                        <video data-src="https://github.com/ttomer/portfolio_website/raw/refs/heads/dev/assets/ObstacleAssault.mov" loading="lazy" controls loop muted></video>
-                        <div class="project-overlay">
-                            <h3>Obstacle Assault</h3>
-                            <p>An Obstacle course game where your goal is to reach the end.</p>
-                            <a href="#" class="view-project" onclick="openModal('Obstacle Assault', 'An Obstacle course game where your goal is to reach the end.', 'https://github.com/ttomer/portfolio_website/raw/refs/heads/dev/assets/ObstacleAssault.mov', false)">View
-              Project</a>
-                        </div>
-                    </div>
-                    <h2 data-aos="fade-up">Optimization 🛠️</h2>
-                    <!-- Second Project Card -->
-                    <div class="project-card" data-aos="zoom-in">
-                        <video data-src="https://github.com/ttomer/portfolio_website/raw/refs/heads/dev/assets/original.mov" loading="lazy" controls loop muted></video>
-                        <div class="project-overlay">
-                            <h3>Unoptimized Load Time</h3>
-                            <p>Load time before optimization for reference.</p>
-                            <a href="#" class="view-project" onclick="openModal('Unoptimized Load Time', 'Load time before optimization for reference could easily take 30+ seconds depending on the device(Android/iOS). Assets were all downloaded synchronously.', 'https://github.com/ttomer/portfolio_website/raw/refs/heads/dev/assets/original.mov', true)">View Before Optimization</a>
-                        </div>
-                    </div>
-                    <!-- Third Project Card -->
-                    <div class="project-card" data-aos="zoom-in">
-                        <video data-src="https://github.com/ttomer/portfolio_website/raw/refs/heads/dev/assets/async.mov" loading="lazy" controls loop muted></video>
-                        <div class="project-overlay">
-                            <h3>Async Load Time</h3>
-                            <p>Demonstrating reduced load time with async methods.</p>
-                            <a href="#" class="view-project" onclick="openModal('Async Load Time', 'Demonstrating reduced load time with asynchronous methods. Load times were cut by 50 - 70% again depending on the device.', 'https://github.com/ttomer/portfolio_website/raw/refs/heads/dev/assets/async.mov', true)">View
-              Optimization</a>
-                        </div>
-                    </div>
-                    <!-- Fourth Project Card -->
-                    <div class="project-card" data-aos="zoom-in">
-                        <video data-src="https://github.com/ttomer/portfolio_website/raw/refs/heads/dev/assets/async cached.mov" loading="lazy" controls loop muted></video>
-                        <div class="project-overlay">
-                            <h3>Cached Async Load Time</h3>
-                            <p>Demonstrating reduced load time with cached async methods.</p>
-                            <a href="#" class="view-project" onclick="openModal('Cached Async Load Time', 'Demonstrating reduced load time with cached asynchronous methods. On average load times were 3-5 times faster and would allow the user to load into the game in under 10 seconds at worst and 3 seconds at best which is lightning fast.', 'https://github.com/ttomer/portfolio_website/raw/refs/heads/dev/assets/async%20cached.mov', true)">View
-              Optimization</a>
+                            <p>Atmospheric puzzle-adventure game set in mysterious dungeons.</p>
+                            <button onclick="openProjectModal('crypt')" class="view-project">View Details</button>
                         </div>
                     </div>
                 </div>
             </section>
-            <footer>
-                <p>
-                    <small>tomer (dash) dev (dot) xyz</small>
-                </p>
-            </footer>
-        </div>
-        <!-- Modal Structure -->
-        <div id="projectModal" class="modal">
-            <div class="modal-content">
-                <span class="close" onclick="closeModal()">&times;</span>
-                <h3 id="modalTitle">Project Title</h3>
-                <p id="modalDescription">Here you can add more details about the project.</p>
-                <video id="modalVideo" controls loop muted autoplay></video>
-                <span id="modalTimer" style="display: none;">Timer: 0s</span>
-                <!-- Timer element -->
-            </div>
-        </div>
-        <script src="static/js/scale.fix.js"></script>
-        <script>
-            particlesJS('particles-js', {
-                "particles": {
-                    "number": {
-                        "value": 140,
-                        "density": {
-                            "enable": true,
-                            "value_area": 800
-                        }
-                    },
-                    "color": {
-                        "value": "#8ab4f8"
-                    },
-                    "shape": {
-                        "type": "circle",
-                        "stroke": {
-                            "width": 0,
-                            "color": "#000000"
-                        },
-                        "polygon": {
-                            "nb_sides": 5
-                        }
-                    },
-                    "opacity": {
-                        "value": 0.8,
-                        "random": false,
-                        "anim": {
-                            "enable": false,
-                            "speed": 1,
-                            "opacity_min": 0.1,
-                            "sync": false
-                        }
-                    },
-                    "size": {
-                        "value": 2,
-                        "random": true,
-                        "anim": {
-                            "enable": false,
-                            "speed": 40,
-                            "size_min": 0.1,
-                            "sync": false
-                        }
-                    },
-                    "line_linked": {
-                        "enable": true,
-                        "distance": 150,
-                        "color": "#8ab4f8",
-                        "opacity": 0.4,
-                        "width": 1
-                    },
-                    "move": {
-                        "enable": true,
-                        "speed": 2,
-                        "direction": "none",
-                        "random": false,
-                        "straight": false,
-                        "out_mode": "out",
-                        "attract": {
-                            "enable": false,
-                            "rotateX": 600,
-                            "rotateY": 1200
-                        }
+        </main>
+
+        <footer>
+            <p>© 2025 Tomer Torgeman. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+
+        // Initialize Particles.js
+        particlesJS('particles-js', {
+            particles: {
+                number: {
+                    value: 80,
+                    density: {
+                        enable: true,
+                        value_area: 800
                     }
                 },
-                "interactivity": {
-                    "detect_on": "canvas",
-                    "events": {
-                        "onhover": {
-                            "enable": true,
-                            "mode": "repulse"
-                        },
-                        "onclick": {
-                            "enable": true,
-                            "mode": "push"
-                        },
-                        "resize": true
-                    },
-                    "modes": {
-                        "grab": {
-                            "distance": 400,
-                            "line_linked": {
-                                "opacity": 1
-                            }
-                        },
-                        "bubble": {
-                            "distance": 400,
-                            "size": 40,
-                            "duration": 2,
-                            "opacity": 8,
-                            "speed": 3
-                        },
-                        "repulse": {
-                            "distance": 100,
-                            "duration": 0.4
-                        },
-                        "push": {
-                            "particles_nb": 4
-                        },
-                        "remove": {
-                            "particles_nb": 2
-                        }
-                    }
+                color: {
+                    value: '#917fb3'
                 },
-                "retina_detect": true
-            });
-
-            let timer;
-            // Variable to store the setInterval reference
-            let timerCount = 0;
-            // Initialize the timer count
-            let scrollPosition = 0;
-            // Variable to store the scroll position
-
-            function startTimer() {
-                timerCount = 0;
-                // Reset timer to 0 every time the modal opens
-                document.getElementById('modalTimer').innerText = `Timer: ${timerCount}s`;
-                document.getElementById('modalTimer').style.display = 'block';
-                // Show timer
-                timer = setInterval( () => {
-                    timerCount++;
-                    document.getElementById('modalTimer').innerText = `Timer: ${timerCount}s`;
+                shape: {
+                    type: 'circle'
+                },
+                opacity: {
+                    value: 0.5,
+                    random: false
+                },
+                size: {
+                    value: 3,
+                    random: true
+                },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: '#917fb3',
+                    opacity: 0.4,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: 'none',
+                    random: false,
+                    straight: false,
+                    out_mode: 'out',
+                    bounce: false
                 }
-                , 1000);
-                // Update every second
-            }
-
-            function stopTimer() {
-                clearInterval(timer);
-                // Stop the timer
-                document.getElementById('modalTimer').style.display = 'none';
-                // Hide timer
-            }
-
-            function openModal(title, description, videoSrc, hasTimer=false) {
-                // Save the current scroll position and disable scrolling
-                scrollPosition = window.scrollY;
-                document.body.style.position = 'fixed';
-                document.body.style.top = `-${scrollPosition}px`;
-                document.body.style.width = '100%';
-                document.body.style.backgroundColor = '#1a1a2e';
-                // Set to match your background
-
-                // Set modal content
-                document.getElementById('modalTitle').innerText = title;
-                document.getElementById('modalDescription').innerText = description;
-                document.getElementById('modalVideo').src = videoSrc;
-                document.getElementById('projectModal').style.display = 'block';
-
-                // Show timer if hasTimer is true
-                if (hasTimer) {
-                    startTimer();
-                } else {
-                    document.getElementById('modalTimer').style.display = 'none';
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: {
+                    onhover: {
+                        enable: true,
+                        mode: 'grab'
+                    },
+                    onclick: {
+                        enable: true,
+                        mode: 'push'
+                    },
+                    resize: true
                 }
-            }
+            },
+            retina_detect: true
+        });
 
-            function closeModal() {
-                // Re-enable scrolling and restore the scroll position
-                document.body.style.position = '';
-                document.body.style.top = '';
-                document.body.style.backgroundColor = '';
-                // Reset to remove inline styling
-                window.scrollTo(0, scrollPosition);
-
-                // Hide modal
-                document.getElementById('projectModal').style.display = 'none';
-                document.getElementById('modalVideo').src = '';
-                // Stop video playback
-                stopTimer();
-                // Stop the timer
-            }
-
-            // Close the modal when clicking outside of it
-            window.onclick = function(event) {
-                if (event.target == document.getElementById('projectModal')) {
-                    closeModal();
-                }
-            }
-        </script>
-        <script>
-            const particleContainer = document.getElementById("particle-trail");
-
-            document.addEventListener("mousemove", (e) => {
-                // Create a new particle element
-                const particle = document.createElement("div");
-                particle.classList.add("particle");
-
-                // Position the particle at the cursor location
-                particle.style.left = `${e.clientX}px`;
-                particle.style.top = `${e.clientY}px`;
-
-                // Apply random movement to create an organic feel
-                const size = Math.random() * 8 + 4;
-                // Random size between 4px and 12px
-                particle.style.width = `${size}px`;
-                particle.style.height = `${size}px`;
-
-                // Append the particle to the container
-                particleContainer.appendChild(particle);
-
-                // Remove particle after animation
-                setTimeout( () => {
-                    particle.remove();
-                }
-                , 1000);
-                // Matches the 1s animation duration
-            }
-            );
-        </script>
-        <script>
-            function updateParticlesHeight() {
-                const particlesElement = document.getElementById("particles-js");
-                const documentHeight = document.documentElement.scrollHeight;
-                particlesElement.style.height = `${documentHeight}px`;
-            }
-
-            // Update the height initially and on resize
-            window.addEventListener("load", updateParticlesHeight);
-            window.addEventListener("resize", updateParticlesHeight);
-            window.addEventListener("scroll", updateParticlesHeight);
-        </script>
-        <script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
-        <script>
-            AOS.init({
-                duration: 1000,
-                // Animation duration in milliseconds
-                easing: 'ease',
-                // Easing function for animations
-                once: true // Only animate elements once when they come into view
-            });
-        </script>
-        <script>
-            window.addEventListener("load", () => {
-                const preloader = document.getElementById("preloader");
-                const mainContent = document.querySelector(".wrapper");
-
-                // Hide the preloader after a brief delay and fade in main content
-                preloader.style.opacity = "0";
-                setTimeout( () => {
-                    preloader.style.display = "none";
-                    mainContent.classList.add("fade-in");
-                }
-                , 500);
-                // Adjust the delay to match the fade transition
-            }
-            );
-        </script>
-        <script>
-            const videos = document.querySelectorAll('.project-card video');
-
-            const lazyLoadVideos = (entries, observer) => {
+        // Lazy loading for videos
+        document.addEventListener('DOMContentLoaded', function() {
+            const videos = document.querySelectorAll('video[data-src]');
+            const videoObserver = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         const video = entry.target;
-                        if (video.dataset.src) {
-                            video.src = video.dataset.src;
-                            // Load the video source
-                            video.load();
-                            // Trigger loading
-                            observer.unobserve(video);
-                            // Stop observing after loading
-                        }
+                        video.src = video.dataset.src;
+                        video.load();
+                        observer.unobserve(video);
                     }
-                }
-                );
-            }
-            ;
+                });
+            }, { threshold: 0.1 });
 
-            const observer = new IntersectionObserver(lazyLoadVideos,{
-                threshold: 0.25
-            });
-            // Adjust threshold as needed
-
-            videos.forEach(video => {
-                observer.observe(video);
-            }
-            );
-        </script>
-    </body>
+            videos.forEach(video => videoObserver.observe(video));
+        });
+    </script>
+</div>
+</body>
 </html>
