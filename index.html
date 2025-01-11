@@ -255,8 +255,8 @@
             particlesMesh.rotation.x += 0.001;
 
             // Responsive to mouse movement
-            particlesMesh.rotation.y += mouseX * 0.1;
-            particlesMesh.rotation.x += mouseY * 0.1;
+            particlesMesh.rotation.y += mouseX * 0.001;
+            particlesMesh.rotation.x += mouseY * 0.001;
 
             renderer.render(scene, camera);
         }
@@ -1776,76 +1776,5 @@
     }
 }
 </style>
-
-<script>
-// Initialize particles.js
-particlesJS('particles-js', {
-    particles: {
-        number: {
-            value: 40,
-            density: {
-                enable: true,
-                value_area: 800
-            }
-        },
-        color: {
-            value: '#4f46e5' // Matches your primary color
-        },
-        shape: {
-            type: 'circle'
-        },
-        opacity: {
-            value: 0.2,
-            random: false
-        },
-        size: {
-            value: 3,
-            random: true
-        },
-        line_linked: {
-            enable: true,
-            distance: 150,
-            color: '#4f46e5', // Matches your primary color
-            opacity: 0.1,
-            width: 1
-        },
-        move: {
-            enable: true,
-            speed: 1,
-            direction: 'none',
-            random: false,
-            straight: false,
-            out_mode: 'out',
-            bounce: false
-        }
-    },
-    interactivity: {
-        detect_on: 'canvas',
-        events: {
-            onhover: {
-                enable: true,
-                mode: 'grab'
-            },
-            onclick: {
-                enable: true,
-                mode: 'push'
-            },
-            resize: true
-        },
-        modes: {
-            grab: {
-                distance: 140,
-                line_linked: {
-                    opacity: 0.3
-                }
-            },
-            push: {
-                particles_nb: 3
-            }
-        }
-    },
-    retina_detect: true
-});
-</script>
 </body>
 </html>
