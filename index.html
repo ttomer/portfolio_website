@@ -740,17 +740,20 @@
     background: rgba(0, 0, 0, 0.9);
     z-index: 1000;
     backdrop-filter: blur(5px);
+    overflow-y: auto;
+    padding: 20px 0;
 }
 
 .modal-content {
     position: relative;
     width: 90%;
     max-width: 1000px;
-    margin: 5% auto;
+    margin: 2% auto;
     background: var(--dark-bg);
     padding: 2rem;
     border-radius: 15px;
     border: 1px solid var(--neon-blue);
+    max-height: none;
 }
 
 .modal-title {
@@ -780,6 +783,7 @@
 
 .modal-video {
     width: 100%;
+    max-height: 70vh;
     border-radius: 10px;
 }
 
@@ -825,6 +829,77 @@
 .expected-time {
     color: var(--neon-pink);
     font-size: 0.9rem;
+}
+
+.modal-details {
+    margin-top: 2rem;
+    padding: 2rem;
+    background: rgba(255,255,255,0.05);
+    border-radius: 15px;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.modal-details h3 {
+    color: var(--neon-blue);
+    margin: 1.5rem 0 1rem;
+    font-size: 1.4rem;
+}
+
+.modal-details h3:first-child {
+    margin-top: 0;
+}
+
+.modal-details p {
+    color: #fff;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+    font-size: 1.1rem;
+}
+
+.modal-details ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin-bottom: 2rem;
+}
+
+.modal-details ul li {
+    color: #fff;
+    margin-bottom: 0.8rem;
+    padding-left: 1.5rem;
+    position: relative;
+    line-height: 1.4;
+}
+
+.modal-details ul li:before {
+    content: '•';
+    color: var(--neon-purple);
+    position: absolute;
+    left: 0;
+    font-size: 1.2em;
+}
+
+.modal-details ul:last-child {
+    margin-bottom: 0;
+}
+
+/* Responsive adjustments */
+@media (max-height: 800px) {
+    .project-modal {
+        align-items: flex-start;
+    }
+    
+    .modal-content {
+        margin: 1rem auto;
+    }
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.modal-body {
+    max-height: none;
+    overflow-y: visible;
 }
 </style>
 
@@ -1001,29 +1076,194 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 document.addEventListener('DOMContentLoaded', function() {
-    // Add click handlers for all detail buttons
-    const detailButtons = document.querySelectorAll('.project-link:last-child');
+    const detailButtons = document.querySelectorAll('.project-link');
     
     detailButtons.forEach(button => {
-        button.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Find the closest parent project card
-            const projectCard = button.closest('.project-card');
-            if (!projectCard) return;
-            
-            // Find the project title
-            const titleElement = projectCard.querySelector('.project-title');
-            if (!titleElement) return;
-            
-            const projectTitle = titleElement.textContent.trim();
-            const videoElement = projectCard.querySelector('.project-video');
-            const videoSrc = videoElement ? videoElement.getAttribute('data-src') : '';
-            
-            showProjectDetails(projectTitle, videoSrc);
-        });
+        if (button.textContent.trim() === 'Details') {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Find the closest parent project card
+                const projectCard = button.closest('.project-card');
+                if (!projectCard) return;
+                
+                // Get the video source
+                const video = projectCard.querySelector('.project-video');
+                const videoSrc = video ? (video.getAttribute('data-src') || video.src) : '';
+                
+                // Get the project title
+                const titleElement = projectCard.querySelector('.project-title');
+                const projectTitle = titleElement ? titleElement.textContent.trim() : '';
+
+                console.log('Opening modal for:', projectTitle); // Debug log
+                console.log('Video source:', videoSrc); // Debug log
+                
+                showProjectDetails(projectTitle, videoSrc);
+            });
+        }
     });
 });
+
+function getProjectDetails(projectTitle) {
+    const details = {
+        'First-Person Shooter': `
+            <div class="modal-details">
+                <h3>Project Overview</h3>
+                <p>A challenging FPS game built with Unreal Engine 5, featuring dynamic combat and interactive environments.</p>
+                
+                <h3>Key Features</h3>
+                <ul>
+                    <li>Advanced AI-driven enemy behavior system</li>
+                    <li>Multiple weapon types with unique characteristics</li>
+                    <li>Dynamic environment interaction</li>
+                    <li>Custom particle effects and animations</li>
+                    <li>Progressive difficulty scaling</li>
+                </ul>
+                
+                <h3>Technical Details</h3>
+                <ul>
+                    <li>Built with Unreal Engine 5</li>
+                    <li>C++ for core gameplay mechanics</li>
+                    <li>Blueprint Visual Scripting for rapid prototyping</li>
+                    <li>Advanced lighting and post-processing effects</li>
+                </ul>
+            </div>
+        `,
+        'Toon Tanks': `
+            <div class="modal-details">
+                <h3>Project Overview</h3>
+                <p>A third-person tank combat game featuring stylized graphics and engaging gameplay mechanics.</p>
+                
+                <h3>Key Features</h3>
+                <ul>
+                    <li>Intuitive tank control system</li>
+                    <li>AI-controlled enemy turrets with different behaviors</li>
+                    <li>Dynamic scoring and health system</li>
+                    <li>Particle effects for impacts and explosions</li>
+                    <li>Multiple level designs</li>
+                </ul>
+                
+                <h3>Technical Details</h3>
+                <ul>
+                    <li>Unreal Engine 4</li>
+                    <li>C++ for gameplay systems</li>
+                    <li>Custom collision detection</li>
+                    <li>Optimized performance for smooth gameplay</li>
+                </ul>
+            </div>
+        `,
+        'Crypt Raider': `
+            <div class="modal-details">
+                <h3>Project Overview</h3>
+                <p>An atmospheric puzzle-adventure game set in a mysterious ancient crypt.</p>
+                
+                <h3>Key Features</h3>
+                <ul>
+                    <li>Physics-based puzzle mechanics</li>
+                    <li>Interactive environment elements</li>
+                    <li>Atmospheric lighting and sound design</li>
+                    <li>Progressive puzzle complexity</li>
+                    <li>Hidden secrets and collectibles</li>
+                </ul>
+                
+                <h3>Technical Details</h3>
+                <ul>
+                    <li>Unreal Engine</li>
+                    <li>Advanced physics system implementation</li>
+                    <li>Dynamic lighting system</li>
+                    <li>Optimized asset streaming</li>
+                </ul>
+            </div>
+        `,
+        'Obstacle Assault': `
+            <div class="modal-details">
+                <h3>Project Overview</h3>
+                <p>A challenging obstacle course game that tests players' timing and platforming skills.</p>
+                
+                <h3>Key Features</h3>
+                <ul>
+                    <li>Dynamic moving obstacles</li>
+                    <li>Precision-based platforming challenges</li>
+                    <li>Progressive difficulty system</li>
+                    <li>Checkpoint system</li>
+                    <li>Time tracking for speedruns</li>
+                </ul>
+                
+                <h3>Technical Details</h3>
+                <ul>
+                    <li>Unreal Engine</li>
+                    <li>Custom physics-based movement system</li>
+                    <li>Optimized collision detection</li>
+                    <li>Performance-focused design</li>
+                </ul>
+            </div>
+        `,
+        'Unoptimized Load Time': `
+            <div class="modal-details">
+                <h3>Performance Analysis</h3>
+                <p>Initial loading performance before optimization implementations.</p>
+                
+                <h3>Key Metrics</h3>
+                <ul>
+                    <li>Android average load time: ~50 seconds</li>
+                    <li>iOS average load time: ~22 seconds</li>
+                </ul>
+                
+                <h3>Identified Issues</h3>
+                <ul>
+                    <li>Sequential asset loading</li>
+                    <li>Unoptimized resource management</li>
+                    <li>Heavy initial memory allocation</li>
+                    <li>Inefficient texture streaming</li>
+                </ul>
+            </div>
+        `,
+        'Async Load Time': `
+            <div class="modal-details">
+                <h3>First Optimization Phase</h3>
+                <p>Implementation of asynchronous loading strategies.</p>
+                
+                <h3>Improvements</h3>
+                <ul>
+                    <li>Android load time reduced to ~25 seconds</li>
+                    <li>iOS load time reduced to ~12 seconds</li>
+                    <li>50% average improvement across platforms</li>
+                </ul>
+                
+                <h3>Implemented Solutions</h3>
+                <ul>
+                    <li>Asynchronous asset loading</li>
+                    <li>Background resource initialization</li>
+                    <li>Optimized loading sequence</li>
+                    <li>Progressive texture streaming</li>
+                </ul>
+            </div>
+        `,
+        'Cached Async Load Time': `
+            <div class="modal-details">
+                <h3>Final Optimization Phase</h3>
+                <p>Implementation of caching system combined with async loading.</p>
+                
+                <h3>Final Results</h3>
+                <ul>
+                    <li>Android final load time: ~17 seconds</li>
+                    <li>iOS final load time: ~7 seconds</li>
+                    <li>66-68% total improvement from original</li>
+                </ul>
+                
+                <h3>Technical Solutions</h3>
+                <ul>
+                    <li>Implemented asset caching system</li>
+                    <li>Memory usage optimization</li>
+                    <li>Resource preloading strategy</li>
+                    <li>Compressed asset delivery</li>
+                </ul>
+            </div>
+        `
+    };
+    
+    return details[projectTitle] || '<p>Project details coming soon!</p>';
+}
 
 function getExpectedTime(title) {
     const times = {
@@ -1039,31 +1279,22 @@ function showProjectDetails(projectTitle, videoSrc) {
     const isOptimizationVideo = ['Unoptimized Load Time', 'Async Load Time', 'Cached Async Load Time'].includes(projectTitle);
     
     const modalHtml = `
-        <div class="project-modal">
-            <div class="modal-content">
-                <span class="close-modal">&times;</span>
-                <h2 class="modal-title">${projectTitle}</h2>
-                ${isOptimizationVideo ? `
-                    <div class="timer-container">
-                        <div class="timer">00:00.000</div>
-                        <div class="timer-controls">
-                            <button class="timer-btn reset-timer">
-                                <i class="fas fa-redo-alt"></i> Reset Timer
-                            </button>
-                            <div class="expected-time">
-                                Expected Time: ${getExpectedTime(projectTitle)}
-                            </div>
-                        </div>
-                    </div>
-                ` : ''}
-                <div class="modal-video-container">
-                    <video class="modal-video" src="${videoSrc}" controls>
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
+    <div class="project-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 class="modal-title">${projectTitle}</h2>
+            <div class="modal-video-container">
+                <video class="modal-video" controls>
+                    <source src="${videoSrc}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="modal-body">
+                ${getProjectDetails(projectTitle)}
             </div>
         </div>
-    `;
+    </div>
+`;
     
     // Insert modal into document
     document.body.insertAdjacentHTML('beforeend', modalHtml);
