@@ -730,93 +730,101 @@
         animation: float 6s ease-in-out infinite;
     }
 
-    /* Add to your existing styles */
-.project-modal {
+    .project-modal {
     display: none;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.8);
+    background: rgba(0, 0, 0, 0.9);
     z-index: 1000;
     backdrop-filter: blur(5px);
 }
 
 .modal-content {
     position: relative;
-    background: var(--dark-bg);
-    margin: 5% auto;
-    padding: 2rem;
     width: 90%;
-    max-width: 600px;
+    max-width: 1000px;
+    margin: 5% auto;
+    background: var(--dark-bg);
+    padding: 2rem;
     border-radius: 15px;
     border: 1px solid var(--neon-blue);
-    box-shadow: 0 0 30px rgba(0,243,255,0.2);
-    animation: modalSlideIn 0.3s ease;
+}
+
+.modal-title {
+    color: var(--neon-blue);
+    font-size: 2rem;
+    margin-bottom: 1rem;
 }
 
 .close-modal {
     position: absolute;
     top: 1rem;
     right: 1rem;
-    font-size: 1.5rem;
+    font-size: 2rem;
     color: var(--neon-blue);
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-modal:hover {
+    color: var(--neon-purple);
+}
+
+.modal-video-container {
+    width: 100%;
+    margin: 1rem 0;
+}
+
+.modal-video {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.timer-container {
+    background: rgba(0,0,0,0.3);
+    padding: 1rem;
+    border-radius: 10px;
+    margin: 1rem 0;
+    border: 1px solid var(--neon-blue);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.timer {
+    font-family: monospace;
+    font-size: 2rem;
+    color: var(--neon-blue);
+    text-shadow: 0 0 10px rgba(0,243,255,0.5);
+}
+
+.timer-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.timer-btn {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid var(--neon-purple);
+    color: var(--neon-purple);
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
-.close-modal:hover {
+.timer-btn:hover {
+    background: var(--neon-purple);
+    color: var(--dark-bg);
+}
+
+.expected-time {
     color: var(--neon-pink);
-    transform: scale(1.1);
-}
-
-.modal-body {
-    margin-top: 1.5rem;
-    color: #fff;
-}
-
-.modal-body h3 {
-    color: var(--neon-purple);
-    margin: 1.5rem 0 0.5rem;
-}
-
-.modal-body ul {
-    list-style: none;
-    padding-left: 0;
-}
-
-.modal-body ul li {
-    margin: 0.5rem 0;
-    padding-left: 1.5rem;
-    position: relative;
-}
-
-.modal-body ul li::before {
-    content: '▹';
-    position: absolute;
-    left: 0;
-    color: var(--neon-blue);
-}
-
-@keyframes modalSlideIn {
-    from {
-        transform: translateY(-100px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-/* Mobile optimization */
-@media (max-width: 768px) {
-    .modal-content {
-        margin: 10% auto;
-        width: 95%;
-        padding: 1.5rem;
-    }
+    font-size: 0.9rem;
 }
 </style>
 
@@ -992,68 +1000,66 @@ document.addEventListener('DOMContentLoaded', function() {
         videos.forEach(video => loadVideo(video));
     }
 });
-
-// Add this to your existing script section or create a new one
 document.addEventListener('DOMContentLoaded', function() {
-    // Setup project links and handlers
-    const projectCards = document.querySelectorAll('.project-card');
+    // Add click handlers for all detail buttons
+    const detailButtons = document.querySelectorAll('.project-link:last-child');
     
-    projectCards.forEach(card => {
-        const demoBtn = card.querySelector('.project-link:first-child');
-        const detailsBtn = card.querySelector('.project-link:last-child');
-        
-        if (demoBtn) {
-            demoBtn.addEventListener('click', function(e) {
-                e.preventDefault();
-                // Get project title to determine which link to use
-                const projectTitle = card.querySelector('.project-title').textContent;
-                
-                switch(projectTitle) {
-                    case 'First-Person Shooter':
-                        window.open('https://github.com/ttomer/FPSShooter', '_blank');
-                        break;
-                    case 'Toon Tanks':
-                        window.open('https://github.com/ttomer/ToonTanks', '_blank');
-                        break;
-                    case 'Crypt Raider':
-                        window.open('https://github.com/ttomer/CryptRaider', '_blank');
-                        break;
-                    case 'Obstacle Assault':
-                        window.open('https://github.com/ttomer/ObstacleAssault', '_blank');
-                        break;
-                    // Add cases for optimization demos if needed
-                    case 'Unoptimized Load Time':
-                    case 'Async Load Time':
-                    case 'Cached Async Load Time':
-                        // Handle optimization demo links or show modal with details
-                        showOptimizationDetails(projectTitle);
-                        break;
-                    default:
-                        alert('Demo coming soon!');
-                }
-            });
-        }
-        
-        if (detailsBtn) {
-            detailsBtn.addEventListener('click', function(e) {
-                e.preventDefault();
-                const projectTitle = card.querySelector('.project-title').textContent;
-                showProjectDetails(projectTitle);
-            });
-        }
+    detailButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Find the closest parent project card
+            const projectCard = button.closest('.project-card');
+            if (!projectCard) return;
+            
+            // Find the project title
+            const titleElement = projectCard.querySelector('.project-title');
+            if (!titleElement) return;
+            
+            const projectTitle = titleElement.textContent.trim();
+            const videoElement = projectCard.querySelector('.project-video');
+            const videoSrc = videoElement ? videoElement.getAttribute('data-src') : '';
+            
+            showProjectDetails(projectTitle, videoSrc);
+        });
     });
 });
 
-// Function to show project details in a modal
-function showProjectDetails(projectTitle) {
-    // Create modal HTML
+function getExpectedTime(title) {
+    const times = {
+        'Unoptimized Load Time': 'Android: 50s, iOS: 22s',
+        'Async Load Time': 'Android: 25s, iOS: 12s',
+        'Cached Async Load Time': 'Android: 17s, iOS: 7s'
+    };
+    return times[title] || '';
+}
+
+function showProjectDetails(projectTitle, videoSrc) {
+    // Check if this is an optimization video
+    const isOptimizationVideo = ['Unoptimized Load Time', 'Async Load Time', 'Cached Async Load Time'].includes(projectTitle);
+    
     const modalHtml = `
         <div class="project-modal">
             <div class="modal-content">
                 <span class="close-modal">&times;</span>
-                <h2>${projectTitle}</h2>
-                <div class="modal-body">
-                    ${getProjectDetails(projectTitle)}
+                <h2 class="modal-title">${projectTitle}</h2>
+                ${isOptimizationVideo ? `
+                    <div class="timer-container">
+                        <div class="timer">00:00.000</div>
+                        <div class="timer-controls">
+                            <button class="timer-btn reset-timer">
+                                <i class="fas fa-redo-alt"></i> Reset Timer
+                            </button>
+                            <div class="expected-time">
+                                Expected Time: ${getExpectedTime(projectTitle)}
+                            </div>
+                        </div>
+                    </div>
+                ` : ''}
+                <div class="modal-video-container">
+                    <video class="modal-video" src="${videoSrc}" controls>
+                        Your browser does not support the video tag.
+                    </video>
                 </div>
             </div>
         </div>
@@ -1065,79 +1071,72 @@ function showProjectDetails(projectTitle) {
     // Get modal elements
     const modal = document.querySelector('.project-modal');
     const closeBtn = modal.querySelector('.close-modal');
+    const video = modal.querySelector('.modal-video');
     
-    // Show modal
-    modal.style.display = 'block';
-    
-    // Close modal functionality
-    closeBtn.onclick = () => modal.remove();
-    window.onclick = (e) => {
-        if (e.target === modal) modal.remove();
-    };
-}
+    // Timer variables
+    let startTime;
+    let timerInterval;
+    const timerDisplay = modal.querySelector('.timer');
+    const resetTimerBtn = modal.querySelector('.reset-timer');
 
-// Function to get project details
-function getProjectDetails(projectTitle) {
-    const details = {
-        'First-Person Shooter': `
-            <p>A challenging FPS game built with Unreal Engine 5.</p>
-            <h3>Features:</h3>
-            <ul>
-                <li>Advanced AI enemy behavior</li>
-                <li>Multiple weapon systems</li>
-                <li>Dynamic level design</li>
-                <li>Custom animations and effects</li>
-            </ul>
-            <h3>Technologies:</h3>
-            <ul>
-                <li>Unreal Engine 5</li>
-                <li>C++</li>
-                <li>Blueprint Visual Scripting</li>
-            </ul>
-        `,
-        'Toon Tanks': `
-            <p>A third-person tank shooter with cartoon-style graphics.</p>
-            <h3>Features:</h3>
-            <ul>
-                <li>Player-controlled tank</li>
-                <li>AI-controlled turrets</li>
-                <li>Score system</li>
-                <li>Special effects and particles</li>
-            </ul>
-            <h3>Technologies:</h3>
-            <ul>
-                <li>Unreal Engine</li>
-                <li>C++</li>
-                <li>Blueprint Visual Scripting</li>
-            </ul>
-        `,
-        // Add details for other projects...
-    };
-    
-    return details[projectTitle] || '<p>Project details coming soon!</p>';
-}
+    // Timer functions
+    function startTimer() {
+        startTime = Date.now();
+        timerInterval = setInterval(updateTimer, 10);
+    }
 
-// Function to show optimization details
-function showOptimizationDetails(title) {
-    const details = {
-        'Unoptimized Load Time': {
-            description: 'Original load time analysis and baseline measurements.',
-            metrics: 'Initial load times: Android 50s, iOS 22s',
-            challenges: 'Large asset sizes, synchronous loading, unoptimized resources'
-        },
-        'Async Load Time': {
-            description: 'Implementation of asynchronous loading patterns.',
-            metrics: 'Improved load times: Android 25s, iOS 12s',
-            improvements: 'Parallel asset loading, deferred initialization'
-        },
-        'Cached Async Load Time': {
-            description: 'Advanced caching implementation with async loading.',
-            metrics: 'Final load times: Android 17s, iOS 7s',
-            improvements: 'Local storage caching, progressive loading, asset compression'
+    function stopTimer() {
+        clearInterval(timerInterval);
+    }
+
+    function resetTimer() {
+        stopTimer();
+        if (timerDisplay) {
+            timerDisplay.textContent = '00:00.000';
         }
+        if (!video.paused) {
+            startTimer();
+        }
+    }
+
+    function updateTimer() {
+        const elapsedTime = Date.now() - startTime;
+        const minutes = Math.floor(elapsedTime / 60000);
+        const seconds = Math.floor((elapsedTime % 60000) / 1000);
+        const milliseconds = elapsedTime % 1000;
+        
+        if (timerDisplay) {
+            timerDisplay.textContent = 
+                `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}.${milliseconds.toString().padStart(3, '0')}`;
+        }
+    }
+
+    // Video event listeners
+    if (isOptimizationVideo) {
+        video.addEventListener('play', startTimer);
+        video.addEventListener('pause', stopTimer);
+        if (resetTimerBtn) {
+            resetTimerBtn.addEventListener('click', resetTimer);
+        }
+    }
+
+    // Show modal and play video
+    modal.style.display = 'block';
+    video.play().catch(e => console.log('Auto-play prevented:', e));
+
+    // Close modal functionality
+    const closeModal = () => {
+        if (isOptimizationVideo) {
+            stopTimer();
+        }
+        video.pause();
+        modal.remove();
     };
-    
-    showProjectDetails(title);
+
+    closeBtn.onclick = closeModal;
+    modal.onclick = (e) => {
+        if (e.target === modal) closeModal();
+    };
 }
 </script>
 
