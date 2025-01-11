@@ -98,7 +98,7 @@
         .scroll-indicator {
             position: absolute;
             bottom: 2rem;
-            left: 50%;
+            /* left: 50%; */
             transform: translateX(-50%);
             display: flex;
             flex-direction: column;
@@ -729,6 +729,95 @@
     .floating {
         animation: float 6s ease-in-out infinite;
     }
+
+    /* Add to your existing styles */
+.project-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    position: relative;
+    background: var(--dark-bg);
+    margin: 5% auto;
+    padding: 2rem;
+    width: 90%;
+    max-width: 600px;
+    border-radius: 15px;
+    border: 1px solid var(--neon-blue);
+    box-shadow: 0 0 30px rgba(0,243,255,0.2);
+    animation: modalSlideIn 0.3s ease;
+}
+
+.close-modal {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.5rem;
+    color: var(--neon-blue);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.close-modal:hover {
+    color: var(--neon-pink);
+    transform: scale(1.1);
+}
+
+.modal-body {
+    margin-top: 1.5rem;
+    color: #fff;
+}
+
+.modal-body h3 {
+    color: var(--neon-purple);
+    margin: 1.5rem 0 0.5rem;
+}
+
+.modal-body ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.modal-body ul li {
+    margin: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.modal-body ul li::before {
+    content: '▹';
+    position: absolute;
+    left: 0;
+    color: var(--neon-blue);
+}
+
+@keyframes modalSlideIn {
+    from {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Mobile optimization */
+@media (max-width: 768px) {
+    .modal-content {
+        margin: 10% auto;
+        width: 95%;
+        padding: 1.5rem;
+    }
+}
 </style>
 
 <section class="profile-section">
@@ -903,6 +992,153 @@ document.addEventListener('DOMContentLoaded', function() {
         videos.forEach(video => loadVideo(video));
     }
 });
+
+// Add this to your existing script section or create a new one
+document.addEventListener('DOMContentLoaded', function() {
+    // Setup project links and handlers
+    const projectCards = document.querySelectorAll('.project-card');
+    
+    projectCards.forEach(card => {
+        const demoBtn = card.querySelector('.project-link:first-child');
+        const detailsBtn = card.querySelector('.project-link:last-child');
+        
+        if (demoBtn) {
+            demoBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                // Get project title to determine which link to use
+                const projectTitle = card.querySelector('.project-title').textContent;
+                
+                switch(projectTitle) {
+                    case 'First-Person Shooter':
+                        window.open('https://github.com/ttomer/FPSShooter', '_blank');
+                        break;
+                    case 'Toon Tanks':
+                        window.open('https://github.com/ttomer/ToonTanks', '_blank');
+                        break;
+                    case 'Crypt Raider':
+                        window.open('https://github.com/ttomer/CryptRaider', '_blank');
+                        break;
+                    case 'Obstacle Assault':
+                        window.open('https://github.com/ttomer/ObstacleAssault', '_blank');
+                        break;
+                    // Add cases for optimization demos if needed
+                    case 'Unoptimized Load Time':
+                    case 'Async Load Time':
+                    case 'Cached Async Load Time':
+                        // Handle optimization demo links or show modal with details
+                        showOptimizationDetails(projectTitle);
+                        break;
+                    default:
+                        alert('Demo coming soon!');
+                }
+            });
+        }
+        
+        if (detailsBtn) {
+            detailsBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const projectTitle = card.querySelector('.project-title').textContent;
+                showProjectDetails(projectTitle);
+            });
+        }
+    });
+});
+
+// Function to show project details in a modal
+function showProjectDetails(projectTitle) {
+    // Create modal HTML
+    const modalHtml = `
+        <div class="project-modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h2>${projectTitle}</h2>
+                <div class="modal-body">
+                    ${getProjectDetails(projectTitle)}
+                </div>
+            </div>
+        </div>
+    `;
+    
+    // Insert modal into document
+    document.body.insertAdjacentHTML('beforeend', modalHtml);
+    
+    // Get modal elements
+    const modal = document.querySelector('.project-modal');
+    const closeBtn = modal.querySelector('.close-modal');
+    
+    // Show modal
+    modal.style.display = 'block';
+    
+    // Close modal functionality
+    closeBtn.onclick = () => modal.remove();
+    window.onclick = (e) => {
+        if (e.target === modal) modal.remove();
+    };
+}
+
+// Function to get project details
+function getProjectDetails(projectTitle) {
+    const details = {
+        'First-Person Shooter': `
+            <p>A challenging FPS game built with Unreal Engine 5.</p>
+            <h3>Features:</h3>
+            <ul>
+                <li>Advanced AI enemy behavior</li>
+                <li>Multiple weapon systems</li>
+                <li>Dynamic level design</li>
+                <li>Custom animations and effects</li>
+            </ul>
+            <h3>Technologies:</h3>
+            <ul>
+                <li>Unreal Engine 5</li>
+                <li>C++</li>
+                <li>Blueprint Visual Scripting</li>
+            </ul>
+        `,
+        'Toon Tanks': `
+            <p>A third-person tank shooter with cartoon-style graphics.</p>
+            <h3>Features:</h3>
+            <ul>
+                <li>Player-controlled tank</li>
+                <li>AI-controlled turrets</li>
+                <li>Score system</li>
+                <li>Special effects and particles</li>
+            </ul>
+            <h3>Technologies:</h3>
+            <ul>
+                <li>Unreal Engine</li>
+                <li>C++</li>
+                <li>Blueprint Visual Scripting</li>
+            </ul>
+        `,
+        // Add details for other projects...
+    };
+    
+    return details[projectTitle] || '<p>Project details coming soon!</p>';
+}
+
+// Function to show optimization details
+function showOptimizationDetails(title) {
+    const details = {
+        'Unoptimized Load Time': {
+            description: 'Original load time analysis and baseline measurements.',
+            metrics: 'Initial load times: Android 50s, iOS 22s',
+            challenges: 'Large asset sizes, synchronous loading, unoptimized resources'
+        },
+        'Async Load Time': {
+            description: 'Implementation of asynchronous loading patterns.',
+            metrics: 'Improved load times: Android 25s, iOS 12s',
+            improvements: 'Parallel asset loading, deferred initialization'
+        },
+        'Cached Async Load Time': {
+            description: 'Advanced caching implementation with async loading.',
+            metrics: 'Final load times: Android 17s, iOS 7s',
+            improvements: 'Local storage caching, progressive loading, asset compression'
+        }
+    };
+    
+    showProjectDetails(title);
+}
 </script>
 
 <!-- Add this after the projects section -->
