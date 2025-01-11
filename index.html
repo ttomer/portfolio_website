@@ -391,77 +391,106 @@
         color: var(--dark-bg);
     }
 
-    /* Projects Section Styles */
-    .projects-section {
-        min-height: 100vh;
-        padding: 4rem 2rem;
-        position: relative;
-    }
+    /* Update these styles in your existing CSS */
+.projects-section {
+    min-height: 100vh;
+    padding: 6rem 2rem;
+    position: relative;
+    background: linear-gradient(45deg, rgba(0,243,255,0.05), rgba(157,0,255,0.05));
+}
 
+.projects-title {
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 4rem;
+    background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.project-card {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: auto;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0,243,255,0.2);
+}
+
+.project-video {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    background: #000;
+}
+
+.project-content {
+    padding: 2rem;
+}
+
+.project-title {
+    font-size: 1.5rem;
+    color: var(--neon-blue);
+    margin-bottom: 1rem;
+}
+
+.project-description {
+    font-size: 1rem;
+    color: #fff;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.project-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.project-link {
+    padding: 0.8rem 1.5rem;
+    border: 1px solid var(--neon-purple);
+    border-radius: 20px;
+    color: var(--neon-purple);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.project-link:hover {
+    background: var(--neon-purple);
+    color: var(--dark-bg);
+}
+
+@media (max-width: 768px) {
     .projects-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
-        max-width: 1200px;
-        margin: 0 auto;
+        grid-template-columns: 1fr;
     }
-
-    .project-card {
-        position: relative;
-        height: 400px;
-        border-radius: 15px;
-        overflow: hidden;
-        background: var(--glass-bg);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255,255,255,0.1);
-        transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .project-card:hover {
-        transform: translateY(-10px);
-    }
-
-    .project-video {
-        width: 100%;
-        height: 60%;
-        object-fit: cover;
-    }
-
-    .project-content {
-        padding: 1.5rem;
-    }
-
-    .project-title {
-        font-size: 1.5rem;
-        color: var(--neon-blue);
-        margin-bottom: 1rem;
-    }
-
-    .project-description {
-        font-size: 1rem;
-        color: #fff;
-        margin-bottom: 1rem;
-    }
-
-    .project-links {
-        display: flex;
-        gap: 1rem;
-    }
-
-    .project-link {
-        padding: 0.5rem 1rem;
-        border: 1px solid var(--neon-purple);
-        border-radius: 20px;
-        color: var(--neon-purple);
-        text-decoration: none;
-        transition: all 0.3s ease;
-    }
-
-    .project-link:hover {
-        background: var(--neon-purple);
-        color: var(--dark-bg);
-    }
-
+}
+.section-title {
+    text-align: center;
+    font-size: 3rem;
+    margin: 4rem auto;
+    background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
     /* Floating Elements Animation */
     @keyframes float {
         0% { transform: translateY(0px); }
@@ -514,11 +543,14 @@
     </div>
 </section>
 
+
 <section class="projects-section">
+    <!-- Add this before the projects grid -->
+<h2 class="projects-title">Featured Projects</h2>
     <div class="projects-grid">
         <!-- FPS Project -->
         <div class="project-card">
-            <video class="project-video" data-src="path-to-fps-video" autoplay loop muted></video>
+            <video class="project-video" data-src="https://github.com/ttomer/portfolio_website/raw/refs/heads/dev/assets/FPS-Shooter.mov" autoplay loop muted></video>
             <div class="project-content">
                 <h3 class="project-title">First-Person Shooter</h3>
                 <p class="project-description">A challenging FPS game with unique levels and mechanics, built with Unreal Engine.</p>
@@ -528,26 +560,39 @@
                 </div>
             </div>
         </div>
-
+    
         <!-- Toon Tanks Project -->
         <div class="project-card">
-            <video class="project-video" data-src="path-to-toon-tanks-video" autoplay loop muted></video>
+            <video class="project-video" data-src="https://github.com/ttomer/portfolio_website/raw/refs/heads/dev/assets/ToonTanks%20720p.mov" autoplay loop muted></video>
             <div class="project-content">
                 <h3 class="project-title">Toon Tanks</h3>
-                <p class="project-description">Third-person tank shooter with strategic gameplay and cartoon-style graphics.</p>
+                <p class="project-description">Third-person tank shooter where the aim is to destroy all your enemies (the turrets).</p>
                 <div class="project-links">
                     <a href="#" class="project-link">View Demo</a>
                     <a href="#" class="project-link">Details</a>
                 </div>
             </div>
         </div>
-
+    
         <!-- Crypt Raider Project -->
         <div class="project-card">
-            <video class="project-video" data-src="path-to-crypt-video" autoplay loop muted></video>
+            <video class="project-video" data-src="https://github.com/ttomer/portfolio_website/raw/refs/heads/dev/assets/cryptraider.mov" autoplay loop muted></video>
             <div class="project-content">
                 <h3 class="project-title">Crypt Raider</h3>
-                <p class="project-description">An atmospheric puzzle game with innovative mechanics and immersive storytelling.</p>
+                <p class="project-description">A puzzle game where you explore a dungeon and try to find a bronze statue.</p>
+                <div class="project-links">
+                    <a href="#" class="project-link">View Demo</a>
+                    <a href="#" class="project-link">Details</a>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Obstacle Assault Project -->
+        <div class="project-card">
+            <video class="project-video" data-src="https://github.com/ttomer/portfolio_website/raw/refs/heads/dev/assets/ObstacleAssault.mov" autoplay loop muted></video>
+            <div class="project-content">
+                <h3 class="project-title">Obstacle Assault</h3>
+                <p class="project-description">An Obstacle course game where your goal is to reach the end.</p>
                 <div class="project-links">
                     <a href="#" class="project-link">View Demo</a>
                     <a href="#" class="project-link">Details</a>
@@ -555,7 +600,84 @@
             </div>
         </div>
     </div>
+    <!-- Add this after the projects grid for optimization demos -->
+<h2 class="section-title" style="margin-top: 4rem;">Performance Optimization</h2>
+<div class="projects-grid">
+    <!-- Original Load Time -->
+    <div class="project-card">
+        <video class="project-video" data-src="https://github.com/ttomer/portfolio_website/raw/refs/heads/dev/assets/original.mov" autoplay loop muted></video>
+        <div class="project-content">
+            <h3 class="project-title">Unoptimized Load Time</h3>
+            <p class="project-description">Load time before optimization for reference could easily take 30+ seconds depending on the device.</p>
+            <div class="project-links">
+                <a href="#" class="project-link">View Details</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Async Load Time -->
+    <div class="project-card">
+        <video class="project-video" data-src="https://github.com/ttomer/portfolio_website/raw/refs/heads/dev/assets/async.mov" autoplay loop muted></video>
+        <div class="project-content">
+            <h3 class="project-title">Async Load Time</h3>
+            <p class="project-description">Load times were cut by 50-70% using asynchronous loading methods.</p>
+            <div class="project-links">
+                <a href="#" class="project-link">View Details</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cached Async Load Time -->
+    <div class="project-card">
+        <video class="project-video" data-src="https://github.com/ttomer/portfolio_website/raw/refs/heads/dev/assets/async%20cached.mov" autoplay loop muted></video>
+        <div class="project-content">
+            <h3 class="project-title">Cached Async Load Time</h3>
+            <p class="project-description">Load times reduced to 3-10 seconds using cached asynchronous methods.</p>
+            <div class="project-links">
+                <a href="#" class="project-link">View Details</a>
+            </div>
+        </div>
+    </div>
+</div>
 </section>
+// Add this after the projects section, before the experience section
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const videos = document.querySelectorAll('video[data-src]');
+    
+    const loadVideo = (video) => {
+        video.src = video.dataset.src;
+        video.removeAttribute('data-src');
+        video.load();
+        video.play().catch(function(error) {
+            console.log("Video play failed:", error);
+        });
+    };
+
+    if ('IntersectionObserver' in window) {
+        const videoObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const video = entry.target;
+                    loadVideo(video);
+                    videoObserver.unobserve(video);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '50px'
+        });
+
+        videos.forEach(video => {
+            videoObserver.observe(video);
+        });
+    } else {
+        // Fallback for browsers that don't support IntersectionObserver
+        videos.forEach(video => loadVideo(video));
+    }
+});
+</script>
+
 <!-- Add this after the projects section -->
 
 <style>
