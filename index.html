@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
     <title>Tomer Torgeman | Game Developer & Software Engineer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -182,6 +183,232 @@
                 transform: translateY(0);
             }
         }
+
+        /* THIS IS TO MAKE SURE FITS MOBILE */
+        /* Add these media queries to your existing CSS */
+
+/* General Mobile Responsiveness */
+@media (max-width: 768px) {
+    /* Hero Section */
+    .glitch {
+        font-size: 2.5rem; /* Smaller title on mobile */
+    }
+    
+    .subtitle {
+        font-size: 1.2rem;
+    }
+
+    /* Profile Section */
+    .profile-container {
+        grid-template-columns: 1fr; /* Stack items vertically */
+        gap: 2rem;
+        padding: 1rem;
+    }
+
+    .profile-card {
+        max-width: 100%;
+        aspect-ratio: 1;
+    }
+
+    .profile-title {
+        font-size: 2rem;
+    }
+
+    .profile-text {
+        font-size: 1rem;
+    }
+
+    /* Projects Section */
+    .projects-grid {
+        grid-template-columns: 1fr; /* Single column on mobile */
+        gap: 2rem;
+        padding: 1rem;
+    }
+
+    .project-card {
+        max-width: 100%;
+    }
+
+    .projects-title, .section-title {
+        font-size: 2rem;
+        padding: 0 1rem;
+    }
+
+    .project-video {
+        aspect-ratio: 16/9;
+        height: auto;
+    }
+
+    .project-content {
+        padding: 1.5rem;
+    }
+
+    .project-title {
+        font-size: 1.3rem;
+    }
+
+    .project-description {
+        font-size: 0.9rem;
+    }
+
+    /* Experience Section */
+    .experience-section {
+        padding: 4rem 1rem;
+    }
+
+    .experience-title {
+        font-size: 2rem;
+    }
+
+    .timeline-content {
+        width: 100%;
+        margin: 0 !important;
+        padding: 1.5rem;
+    }
+
+    .timeline-role {
+        font-size: 1.3rem;
+    }
+
+    .timeline-skills {
+        flex-wrap: wrap;
+    }
+
+    /* Skills Section */
+    .skills-section {
+        padding: 4rem 1rem;
+    }
+
+    .skills-title {
+        font-size: 2rem;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .skill-category {
+        padding: 1.5rem;
+    }
+
+    /* Contact Section */
+    .contact-section {
+        padding: 4rem 1rem;
+    }
+
+    .contact-title {
+        font-size: 2rem;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .contact-form {
+        padding: 1.5rem;
+    }
+
+    .form-input {
+        font-size: 1rem;
+    }
+
+    /* Social Links */
+    .social-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .social-link {
+        width: 45px;
+        height: 45px;
+    }
+}
+
+/* Small Mobile Devices */
+@media (max-width: 480px) {
+    .glitch {
+        font-size: 2rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    .project-links {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .project-link {
+        width: 100%;
+        text-align: center;
+    }
+
+    .tech-stack {
+        gap: 0.5rem;
+    }
+
+    .tech-item {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+    }
+}
+
+/* Landscape Mode */
+@media (max-height: 600px) and (orientation: landscape) {
+    .hero {
+        height: auto;
+        min-height: 100vh;
+        padding: 2rem 0;
+    }
+
+    .profile-card {
+        aspect-ratio: 16/9;
+    }
+}
+
+/* Ensure proper spacing on larger tablets */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Touch Device Optimizations */
+@media (hover: none) {
+    .project-card:hover {
+        transform: none;
+    }
+
+    .social-link:hover {
+        transform: none;
+    }
+
+    .tech-item:hover {
+        background: rgba(255,255,255,0.1);
+        color: var(--neon-blue);
+    }
+}
+
+/* Fix for notched phones */
+@supports (padding: env(safe-area-inset-top)) {
+    .hero,
+    .profile-section,
+    .projects-section,
+    .experience-section,
+    .skills-section,
+    .contact-section {
+        padding-left: env(safe-area-inset-left);
+        padding-right: env(safe-area-inset-right);
+    }
+}
     </style>
 </head>
 <body>
