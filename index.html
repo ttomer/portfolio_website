@@ -1203,8 +1203,7 @@ function getProjectDetails(projectTitle) {
                 <ul>
                     <li>Sequential asset loading</li>
                     <li>Unoptimized resource management</li>
-                    <li>Heavy initial memory allocation</li>
-                    <li>Inefficient texture streaming</li>
+                    <li>Eager Loading</li>
                 </ul>
             </div>
         `,
@@ -1215,38 +1214,34 @@ function getProjectDetails(projectTitle) {
                 
                 <h3>Improvements</h3>
                 <ul>
-                    <li>Android load time reduced to ~25 seconds</li>
-                    <li>iOS load time reduced to ~12 seconds</li>
+                    <li>Android load time reduced to under ~25 seconds</li>
+                    <li>iOS load time reduced to under ~12 seconds</li>
                     <li>50% average improvement across platforms</li>
                 </ul>
                 
                 <h3>Implemented Solutions</h3>
                 <ul>
                     <li>Asynchronous asset loading</li>
-                    <li>Background resource initialization</li>
-                    <li>Optimized loading sequence</li>
-                    <li>Progressive texture streaming</li>
+                    <li>Optimized lazy loading strategy</li>
+                    <li>Caching of whatever assets are available and have been downloaded</li>
                 </ul>
             </div>
         `,
         'Cached Async Load Time': `
             <div class="modal-details">
                 <h3>Final Optimization Phase</h3>
-                <p>Implementation of caching system combined with async loading.</p>
+                <p>Implementation of caching system combined with asynchronous loading.</p>
                 
                 <h3>Final Results</h3>
                 <ul>
-                    <li>Android final load time: ~17 seconds</li>
-                    <li>iOS final load time: ~7 seconds</li>
+                    <li>Android final load time: under ~17 seconds</li>
+                    <li>iOS final load time: under ~7 seconds</li>
                     <li>66-68% total improvement from original</li>
                 </ul>
                 
                 <h3>Technical Solutions</h3>
                 <ul>
-                    <li>Implemented asset caching system</li>
-                    <li>Memory usage optimization</li>
-                    <li>Resource preloading strategy</li>
-                    <li>Compressed asset delivery</li>
+                    <li>Asynchronous asset bundle download combined with caching </li>
                 </ul>
             </div>
         `
