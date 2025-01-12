@@ -1496,20 +1496,22 @@ function showProjectDetails(projectTitle, videoSrc) {
 
     /* Connector lines */
     .timeline-connector {
-        position: absolute;
-        top: 50%;
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100%;
         width: calc(5% + 10px);
         height: 2px;
         background: var(--neon-blue);
     }
 
-    .timeline-item:nth-child(odd) .timeline-connector {
+    /* .timeline-item:nth-child(odd) .timeline-connector {
         right: 45%;
     }
 
     .timeline-item:nth-child(even) .timeline-connector {
         left: 45%;
-    }
+    } */
 
     /* Responsive Design */
     @media (max-width: 768px) {
@@ -1560,10 +1562,10 @@ function showProjectDetails(projectTitle, videoSrc) {
             <div class="timeline-item">
                 <div class="timeline-content">
                     <div class="timeline-dot"></div>
-                    <div class="timeline-connector"></div>
                     <div class="timeline-date">2021 - 2024</div>
                     <div class="timeline-role">Software Engineer</div>
                     <div class="timeline-company">Blastworks Inc.</div>
+                    <div class="timeline-connector"></div>
                     <div class="timeline-description">
                         <ul>
                             <li>Developed casino game features for 20,000+ users</li>
@@ -1585,10 +1587,10 @@ function showProjectDetails(projectTitle, videoSrc) {
             <div class="timeline-item">
                 <div class="timeline-content">
                     <div class="timeline-dot"></div>
-                    <div class="timeline-connector"></div>
                     <div class="timeline-date">2020 - 2021</div>
                     <div class="timeline-role">QA Automation Engineer</div>
                     <div class="timeline-company">Blastworks Inc.</div>
+                    <div class="timeline-connector"></div>
                     <div class="timeline-description">
                         <ul>
                             <li>Automated test processes</li>
@@ -1610,10 +1612,10 @@ function showProjectDetails(projectTitle, videoSrc) {
             <div class="timeline-item">
                 <div class="timeline-content">
                     <div class="timeline-dot"></div>
-                    <div class="timeline-connector"></div>
                     <div class="timeline-date">2018</div>
                     <div class="timeline-role">Software Test Automation Intern</div>
                     <div class="timeline-company">Kaymera Technologies</div>
+                    <div class="timeline-connector"></div>
                     <div class="timeline-description">
                         <ul>
                             <li>Developed automated testing systems</li>
