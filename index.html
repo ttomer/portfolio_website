@@ -666,6 +666,8 @@
     aspect-ratio: 16/9;
     object-fit: cover;
     background: #000;
+    max-height: 100vh;
+    -webkit-overflow-scrolling: touch;
 }
 
 .project-content {
@@ -785,6 +787,8 @@
     width: 100%;
     max-height: 70vh;
     border-radius: 10px;
+    -webkit-overflow-scrolling: touch;
+    object-fit: contain;
 }
 
 .timer-container {
@@ -950,7 +954,7 @@ html {
     <div class="projects-grid">
         <!-- FPS Project -->
         <div class="project-card">
-            <video class="project-video" data-src="https://github.com/ttomer/portfolio_website/raw/refs/heads/dev/assets/FPS-Shooter.mov" autoplay loop muted></video>
+            <video class="project-video" data-src="https://github.com/ttomer/portfolio_website/raw/refs/heads/dev/assets/FPS-Shooter.mov" autoplay loop muted playsinline></video>
             <div class="project-content">
                 <h3 class="project-title">First-Person Shooter</h3>
                 <p class="project-description">A challenging FPS game with unique levels and mechanics, built with Unreal Engine.</p>
@@ -963,7 +967,7 @@ html {
     
         <!-- Toon Tanks Project -->
         <div class="project-card">
-            <video class="project-video" data-src="https://github.com/ttomer/portfolio_website/raw/refs/heads/dev/assets/ToonTanks%20720p.mov" autoplay loop muted></video>
+            <video class="project-video" data-src="https://github.com/ttomer/portfolio_website/raw/refs/heads/dev/assets/ToonTanks%20720p.mov" autoplay loop muted playsinline></video>
             <div class="project-content">
                 <h3 class="project-title">Toon Tanks</h3>
                 <p class="project-description">Third-person tank shooter where the aim is to destroy all your enemies (the turrets).</p>
@@ -976,7 +980,7 @@ html {
     
         <!-- Crypt Raider Project -->
         <div class="project-card">
-            <video class="project-video" data-src="https://github.com/ttomer/portfolio_website/raw/refs/heads/dev/assets/cryptraider.mov" autoplay loop muted></video>
+            <video class="project-video" data-src="https://github.com/ttomer/portfolio_website/raw/refs/heads/dev/assets/cryptraider.mov" autoplay loop muted playsinline></video>
             <div class="project-content">
                 <h3 class="project-title">Crypt Raider</h3>
                 <p class="project-description">A puzzle game where you explore a dungeon and try to find a bronze statue.</p>
@@ -989,7 +993,7 @@ html {
     
         <!-- Obstacle Assault Project -->
         <div class="project-card">
-            <video class="project-video" data-src="https://github.com/ttomer/portfolio_website/raw/refs/heads/dev/assets/ObstacleAssault.mov" autoplay loop muted></video>
+            <video class="project-video" data-src="https://github.com/ttomer/portfolio_website/raw/refs/heads/dev/assets/ObstacleAssault.mov" autoplay loop muted playsinline></video>
             <div class="project-content">
                 <h3 class="project-title">Obstacle Assault</h3>
                 <p class="project-description">An Obstacle course game where your goal is to reach the end.</p>
@@ -1005,7 +1009,7 @@ html {
 <div class="projects-grid">
     <!-- Original Load Time -->
     <div class="project-card">
-        <video class="project-video" data-src="https://github.com/ttomer/portfolio_website/raw/refs/heads/dev/assets/original.mov" autoplay loop muted></video>
+        <video class="project-video" data-src="https://github.com/ttomer/portfolio_website/raw/refs/heads/dev/assets/original.mov" autoplay loop muted playsinline></video>
         <div class="project-content">
             <h3 class="project-title">Unoptimized Load Time</h3>
             <p class="project-description">Load time before optimization for reference could easily take 30+ seconds depending on the device.</p>
@@ -1017,7 +1021,7 @@ html {
 
     <!-- Async Load Time -->
     <div class="project-card">
-        <video class="project-video" data-src="https://github.com/ttomer/portfolio_website/raw/refs/heads/dev/assets/async.mov" autoplay loop muted></video>
+        <video class="project-video" data-src="https://github.com/ttomer/portfolio_website/raw/refs/heads/dev/assets/async.mov" autoplay loop muted playsinline></video>
         <div class="project-content">
             <h3 class="project-title">Async Load Time</h3>
             <p class="project-description">Load times were cut by 50-70% using asynchronous loading methods.</p>
@@ -1029,7 +1033,7 @@ html {
 
     <!-- Cached Async Load Time -->
     <div class="project-card">
-        <video class="project-video" data-src="https://github.com/ttomer/portfolio_website/raw/refs/heads/dev/assets/async%20cached.mov" autoplay loop muted></video>
+        <video class="project-video" data-src="https://github.com/ttomer/portfolio_website/raw/refs/heads/dev/assets/async%20cached.mov" autoplay loop muted playsinline></video>
         <div class="project-content">
             <h3 class="project-title">Cached Async Load Time</h3>
             <p class="project-description">Load times reduced to 3-10 seconds using cached asynchronous methods.</p>
@@ -1280,7 +1284,7 @@ function showProjectDetails(projectTitle, videoSrc) {
                 <span class="close-modal">&times;</span>
                 <h2 class="modal-title">${projectTitle}</h2>
                 <div class="modal-video-container">
-                    <video class="modal-video" controls>
+                    <video class="modal-video" controls playsinline>
                         <source src="${videoSrc}" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
@@ -1291,8 +1295,7 @@ function showProjectDetails(projectTitle, videoSrc) {
                 </div>
             </div>
         </div>
-    `;
-    
+    `;    
     // Insert modal into document
     document.body.insertAdjacentHTML('beforeend', modalHtml);
     
