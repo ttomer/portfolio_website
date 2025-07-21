@@ -1,6 +1,9 @@
+<<<<<<< HEAD
 /* Animation Keyframes and Effects */
 
 /* Glitch Effect Animation */
+=======
+>>>>>>> origin/dev
 @keyframes glitch {
     0% {
         text-shadow: 0.05em 0 0 var(--neon-blue),
@@ -39,7 +42,10 @@
     }
 }
 
+<<<<<<< HEAD
 /* Scroll Line Animation */
+=======
+>>>>>>> origin/dev
 @keyframes scrollLine {
     0% {
         height: 0;
@@ -55,7 +61,10 @@
     }
 }
 
+<<<<<<< HEAD
 /* Fade In Animation */
+=======
+>>>>>>> origin/dev
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -67,22 +76,29 @@
     }
 }
 
+<<<<<<< HEAD
 /* Floating Elements Animation */
+=======
+>>>>>>> origin/dev
 @keyframes float {
     0% { transform: translateY(0px); }
     50% { transform: translateY(-20px); }
     100% { transform: translateY(0px); }
 }
 
+<<<<<<< HEAD
 .floating {
     animation: float 6s ease-in-out infinite;
 }
 
 /* Skill Animation */
+=======
+>>>>>>> origin/dev
 @keyframes skillPop {
     0% { transform: scale(1); }
     50% { transform: scale(1.1); }
     100% { transform: scale(1); }
+<<<<<<< HEAD
 }
 
 /* Success Message Animation */
@@ -103,4 +119,6 @@
     border-radius: 10px;
     color: #fff;
     animation: slideIn 0.5s ease forwards;
+=======
+>>>>>>> origin/dev
 }
