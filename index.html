@@ -1,156 +1,460 @@
-<!doctype html>
-<html>
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="chrome=1">
-  <title>Ethan Steininger | Engineer and Explorer</title>
-
-  <link rel="stylesheet" href="static/css/styles.css">
-  <link rel="stylesheet" href="static/css/pygment_trac.css">
-  <link rel="stylesheet" href="static/external/font-awesome/css/font-awesome.min.css">
-
-  <meta name="viewport" content="width=device-width">
-  <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KB3SDT96ZC"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-KB3SDT96ZC');
+    </script>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Tomer Torgeman | Game Developer & Software Engineer</title>
+    
+    <!-- External Dependencies -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    
+    <!-- Local Stylesheets -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
 </head>
-
-<style>
-  .bio a:not(:first-child) i {
-    font-size: 26px;
-    /* color: #595959; */
-    padding-left: 1rem;
-  }
-
-  .propic img {
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px dotted #ffdeb9;
-    /* 2px wide black border */
-  }
-
-  /* .center {
-    text-align: center;
-  } */
-</style>
-
 <body>
-  <div class="wrapper">
-    <header>
-      <h1 class="propic"><a href="/">
-          <div class="center"><img src="static/img/e.jpeg" width="200"></div>
-        </a>
-      </h1>
-      <p class="bio"><span class="center">tikkun olam</span><br><br>
-        <a href="https://github.com/esteininger" target="_blank" title="Opens in a new window">
-          <i class="fa fa-github" aria-hidden="true"></i>
-        </a>
-        <a href="https://www.linkedin.com/in/ethansteininger/" target="_blank" title="Opens in a new window">
-          <i class="fa fa-linkedin" aria-hidden="true"></i>
-        </a>
-        <a href="https://esteininger.medium.com/" target="_blank" title="Opens in a new window">
-          <i class="fa fa-medium" aria-hidden="true"></i>
-        </a>
-        <a href="https://twitter.com/ethansteininger" target="_blank" title="Opens in a new window">
-          <i class="fa fa-twitter" aria-hidden="true"></i>
-        </a>
-        <a href="https://instagram.com/ethan.codes" target="_blank" title="Opens in a new window">
-          <i class="fa fa-instagram" aria-hidden="true"></i>
-        </a>
-      </p>
-      <p class="center"><a href="https://github.com/esteininger/minimal-website">This Site's Code</a></p>
-    </header>
-    <section>
-
-      <h2>👋🏻 Howdy, I'm Ethan!</h2>
-
-      <h3>Bio 🤔</h3>
-
-      <p>
-        I merge product with tech to solve problems using empathy, ideation, and iteration.
-      </p>
-
-      <p>
-        I've worn many hats - engineer, product manager, sales leader, and today I'm a startup builder.
-      </p>
-
-      <p>
-        Recently, I led <a href="https://www.mongodb.com/developer/author/ethan-steininger/">Search at MongoDB</a>
-        and
-        now, I'm on a mission to enable anyone to build <a href="https://mixpeek.com">AI search applications</a>.
-      </p>
-
-      <h3>Balance 🧘🏼</h3>
-
-      <p>
-        I'm all about work/life balance and love exploring the great outdoors with <a
-          href="https://www.instagram.com/danywigglebutt/?hl=en">my aussie pup</a> through hiking, biking,
-        kayaking, and climbing.
-      </p>
-
-      <p>
-        I learned electricals, plumbing, woodwork and
-        metalwork to equip a <a href="https://vanlifecoder.com/">badass camper van</a> for off-grid work and travel.
-        Check it out, maybe it'll
-        inspire you to pursue your own <a
-          href="https://esteininger.medium.com/why-pursuing-a-bhag-is-worth-the-struggle-922401444f82">BHAG!</a>
-      </p>
-
-
-      <h3>Blueprints 🛠️</h3>
-
-      <ul>
-        <li>
-          <a href="https://vectorsearch.dev/">VectorSearch.dev</a> - Applying <a
-            href="https://esteininger.medium.com/design-thinking-for-product-launches-minimal-viable-discovery-8105c831273a">Minimal
-            Viable Discovery</a> principles at
-          MongoDB to
-          release our latest, most complex feature.
-        </li>
-        <li>
-          <a href="https://nutripeek.com">Nutripeek.com</a> - Empowering users to take control of their mental and
-          physical health through the research, curation and evaluation of supplement stacks.
-
-        </li>
-        <li>
-          <a href="https://meports.com">Meports.com</a> - Enhancing everybody's quality of life by using data and
-          technology. Meports combines <a href="https://gene.meports.com">genetic reporting</a> with digital wearable
-          monitoring to deliver data-driven lifestyle optimization reporting.
-        </li>
-        <li>
-          <a href="https://vimeo.com/203917137">Fandemic</a> - Low code platform allowing anybody to create their
-          branded merchandise ecommerce stores.
-        </li>
-        <li>
-          <a href="https://vimeo.com/101638048">ComparedCare</a> - Award winning healthcare cost transparency platform.
-        </li>
-      </ul>
-
-      <!-- <h3>Blog 📝</h3>
-
-      <ul>
-        <li>
-          <a href="/posts/urgency">Urgency</a> April 8, 2024
-        </li>
-      </ul> -->
-
-      <h3>Broadcasts 🎤</h3>
-
-      <ul>
-        <li><a href="https://www.youtube.com/watch?v=EDPk1umuge0">Ethan Steininger and the AI Landscape on the Weaviate
-            Podcast
-          </a>
-        </li>
-      </ul>
-
-
+    <!-- Hero Section -->
+    <canvas id="hero-canvas"></canvas>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="glitch-wrapper">
+            <h1 class="glitch">
+                TOMER TORGEMAN
+                <span>TOMER TORGEMAN</span>
+                <span>TOMER TORGEMAN</span>
+            </h1>
+            <p class="subtitle">Software Engineer</p>
+        </div>
+        <div class="scroll-indicator">
+            <p>Scroll to Explore</p>
+            <div class="line"></div>
+        </div>
     </section>
-    <footer>
-      <p><small>me (at) ethan (dot) dev</small></p>
-    </footer>
-  </div>
-  <script src="static/js/scale.fix.js"></script>
-</body>
 
+    <!-- Profile Section -->
+    <section class="profile-section">
+        <div class="profile-container">
+            <div class="profile-card floating">
+                <div class="profile-card-inner">
+                    <div class="profile-front">
+                        <img src="assets/images/e.jpg" alt="Tomer Torgeman" class="profile-image">
+                    </div>
+                    <div class="profile-back">
+                        <h3>Quick Facts</h3>
+                        <p>🎮 Game Developer</p>
+                        <p>💻 Software Engineer</p>
+                        <div class="tech-stack">
+                            <span class="tech-item">Unity</span>
+                            <span class="tech-item">C#</span>
+                            <span class="tech-item">C++</span>
+                            <span class="tech-item">Unreal Engine</span>
+                            <span class="tech-item">Java</span>
+                            <span class="tech-item">JavaScript</span>
+                            <span class="tech-item">Python</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-content">
+                <h2 class="profile-title">About Me</h2>
+                <p class="profile-text">
+                    I started my journey in the cybersecurity industry and then moved into the gaming industry which is where I have been since!
+                    I've worn many hats - Software Engineer, QA, Automation Engineer, and on the side I work on developing personal projects and courses.
+                </p>
+                <p class="profile-text">
+                    Currently focused on developing casino games and improving system performance, combining innovative gameplay mechanics with robust technical solutions that ensure both entertainment and efficiency.
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-item">💻 Software Engineer</span>
+                    <span class="tech-item">🎮 Unity Developer</span>
+                    <span class="tech-item">Automation Engineer</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects-section">
+        <h2 class="projects-title">Featured Projects</h2>
+        <div class="projects-grid">
+            <!-- FPS Project -->
+            <div class="project-card">
+                <video class="project-video" data-src="https://github.com/ttomer/portfolio_website/raw/refs/heads/legacy/assets/FPS-Shooter.mov" autoplay loop muted playsinline></video>
+                <div class="project-content">
+                    <h3 class="project-title">First-Person Shooter</h3>
+                    <p class="project-description">A challenging FPS game with unique levels and mechanics, built with Unreal Engine.</p>
+                    <div class="project-links">
+                        <a href="#" class="project-link">Details</a>
+                    </div>
+                </div>
+            </div>
+        
+            <!-- Toon Tanks Project -->
+            <div class="project-card">
+                <video class="project-video" data-src="https://github.com/ttomer/portfolio_website/raw/refs/heads/legacy/assets/ToonTanks%20720p.mov" autoplay loop muted playsinline></video>
+                <div class="project-content">
+                    <h3 class="project-title">Toon Tanks</h3>
+                    <p class="project-description">Third-person tank shooter where the aim is to destroy all your enemies (the turrets).</p>
+                    <div class="project-links">
+                        <a href="#" class="project-link">Details</a>
+                    </div>
+                </div>
+            </div>
+        
+            <!-- Crypt Raider Project -->
+            <div class="project-card">
+                <video class="project-video" data-src="https://github.com/ttomer/portfolio_website/raw/refs/heads/legacy/assets/cryptraider.mov" autoplay loop muted playsinline></video>
+                <div class="project-content">
+                    <h3 class="project-title">Crypt Raider</h3>
+                    <p class="project-description">A puzzle game where you explore a dungeon and try to find a bronze statue.</p>
+                    <div class="project-links">
+                        <a href="#" class="project-link">Details</a>
+                    </div>
+                </div>
+            </div>
+        
+            <!-- Obstacle Assault Project -->
+            <div class="project-card">
+                <video class="project-video" data-src="https://github.com/ttomer/portfolio_website/raw/refs/heads/legacy/assets/ObstacleAssault.mov" autoplay loop muted playsinline></video>
+                <div class="project-content">
+                    <h3 class="project-title">Obstacle Assault</h3>
+                    <p class="project-description">An Obstacle course game where your goal is to reach the end.</p>
+                    <div class="project-links">
+                        <a href="#" class="project-link">Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Performance Optimization Section -->
+        <h2 class="section-title" style="margin-top: 4rem;">Performance Optimization</h2>
+        <div class="projects-grid">
+            <!-- Original Load Time -->
+            <div class="project-card">
+                <video class="project-video" data-src="https://github.com/ttomer/portfolio_website/raw/refs/heads/legacy/assets/original.mov" autoplay loop muted playsinline></video>
+                <div class="project-content">
+                    <h3 class="project-title">Unoptimized Load Time</h3>
+                    <p class="project-description">Load time before optimization for reference could easily take 30+ seconds depending on the device.</p>
+                    <div class="project-links">
+                        <a href="#" class="project-link">Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Async Load Time -->
+            <div class="project-card">
+                <video class="project-video" data-src="https://github.com/ttomer/portfolio_website/raw/refs/heads/legacy/assets/async.mov" autoplay loop muted playsinline></video>
+                <div class="project-content">
+                    <h3 class="project-title">Async Load Time</h3>
+                    <p class="project-description">Load times were cut by 50-70% using asynchronous loading methods.</p>
+                    <div class="project-links">
+                        <a href="#" class="project-link">Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cached Async Load Time -->
+            <div class="project-card">
+                <video class="project-video" data-src="https://github.com/ttomer/portfolio_website/raw/refs/heads/legacy/assets/async%20cached.mov" autoplay loop muted playsinline></video>
+                <div class="project-content">
+                    <h3 class="project-title">Cached Async Load Time</h3>
+                    <p class="project-description">Load times reduced to 3-10 seconds using cached asynchronous methods.</p>
+                    <div class="project-links">
+                        <a href="#" class="project-link">Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="experience-section">
+        <h2 class="experience-title">My Journey</h2>
+        <div class="timeline-container">
+            <div class="timeline-line"></div>
+            <div class="timeline-items">
+                <!-- Current Position -->
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">2021 - 2024</div>
+                        <div class="timeline-role">Software Engineer</div>
+                        <div class="timeline-company">Blastworks Inc.</div>
+                        <div class="timeline-connector"></div>
+                        <div class="timeline-description">
+                            <ul>
+                                <li>Developed casino game features for 20,000+ users</li>
+                                <li>Improved load times by 3-5x across platforms</li>
+                                <li>Fixed critical synchronization issues</li>
+                                <li>Implemented asynchronous asset loading</li>
+                            </ul>
+                        </div>
+                        <div class="timeline-skills">
+                            <span class="timeline-skill">Unity</span>
+                            <span class="timeline-skill">C#</span>
+                            <span class="timeline-skill">Javascript</span>
+                            <span class="timeline-skill">Mobile development</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Previous Position -->
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">2020 - 2021</div>
+                        <div class="timeline-role">QA Automation Engineer</div>
+                        <div class="timeline-company">Blastworks Inc.</div>
+                        <div class="timeline-connector"></div>
+                        <div class="timeline-description">
+                            <ul>
+                                <li>Automated test processes</li>
+                                <li>Conducted testing across 200+ games</li>
+                                <li>Developed automation scripts</li>
+                                <li>Managed multi-platform testing</li>
+                            </ul>
+                        </div>
+                        <div class="timeline-skills">
+                            <span class="timeline-skill">Test Automation</span>
+                            <span class="timeline-skill">Bug Tracking and Reporting</span>
+                            <span class="timeline-skill">Performance Testing</span>
+                            <span class="timeline-skill">API Testing</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cybersecurity Position -->
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">2018</div>
+                        <div class="timeline-role">Software Test Automation Intern</div>
+                        <div class="timeline-company">Kaymera Technologies</div>
+                        <div class="timeline-connector"></div>
+                        <div class="timeline-description">
+                            <ul>
+                                <li>Developed automated testing systems</li>
+                                <li>Implemented CI/CD pipelines</li>
+                                <li>Tested mobile applications</li>
+                            </ul>
+                        </div>
+                        <div class="timeline-skills">
+                            <span class="timeline-skill">Continuous Integration/Continuous Deployment (CI/CD)</span>
+                            <span class="timeline-skill">API and Backend Testing</span>
+                            <span class="timeline-skill">Automated Testing Frameworks</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills-section">
+        <div class="skills-container">
+            <h2 class="skills-title">Technical Arsenal</h2>
+            <div class="skills-grid">
+                <!-- Game Development -->
+                <div class="skill-category" data-aos="fade-up">
+                    <div class="skill-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <h3 class="skill-category-title">Game Development</h3>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">Unreal Engine</span>
+                            <span class="skill-percentage">70%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 0" data-width="70"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">Unity</span>
+                            <span class="skill-percentage">80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 0" data-width="80"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">C#</span>
+                            <span class="skill-percentage">80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 0" data-width="80"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Programming -->
+                <div class="skill-category" data-aos="fade-up" data-aos-delay="200">
+                    <div class="skill-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="skill-category-title">Programming</h3>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">C++</span>
+                            <span class="skill-percentage">70%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 0" data-width="70"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">Java</span>
+                            <span class="skill-percentage">80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 0" data-width="80"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">Python</span>
+                            <span class="skill-percentage">65%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 0" data-width="65"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Security -->
+                <div class="skill-category" data-aos="fade-up" data-aos-delay="400">
+                    <div class="skill-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="skill-category-title">Quality Assurance/Automation</h3>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">Test Automation</span>
+                            <span class="skill-percentage">80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 0" data-width="80"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">Performance Optimization</span>
+                            <span class="skill-percentage">80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 0" data-width="80"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">Manual Testing</span>
+                            <span class="skill-percentage">85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 0" data-width="85"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="contact-container">
+            <h2 class="contact-title">Get In Touch</h2>
+            <p class="contact-subtitle">Have a project in mind? Let's create something amazing together.</p>
+
+            <div class="contact-grid">
+                <div class="contact-form">
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <label class="form-label">Name</label>
+                            <input type="text" id="user_name" name="user_name" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Email</label>
+                            <input type="email" id="user_email" name="user_email" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Subject</label>
+                            <input type="text" id="subject" name="subject" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Message</label>
+                            <textarea id="message" name="message" class="form-input" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-info-content">
+                            <h3>Location</h3>
+                            <p>Vancouver, Canada</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="success-message" id="success-message">
+            Message sent successfully!
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div id="particles-js"></div>
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <h3>Tomer Torgeman</h3>
+                    <p>Crafting digital experiences with code and creativity.</p>
+                    <div class="social-links">
+                        <a href="https://github.com/ttomer" class="social-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/tomer-torgeman-a12494173/" class="social-link">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Tomer Torgeman. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Files -->
+    <script src="js/three-scene.js"></script>
+    <script src="js/video-loader.js"></script>
+    <script src="js/project-modal.js"></script>
+    <script src="js/timeline-animation.js"></script>
+    <script src="js/skills-animation.js"></script>
+    <script src="js/contact-form.js"></script>
+</body>
 </html>
