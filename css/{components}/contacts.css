@@ -1,9 +1,4 @@
-.contact-section {
-    min-height: 100vh;
-    padding: 6rem 2rem;
-    position: relative;
-    background: linear-gradient(to bottom, rgba(157,0,255,0.05), rgba(0,0,0,0));
-}
+/* Contact section styles moved to main components.css to avoid conflicts */
 
 .contact-container {
     max-width: 1200px;
