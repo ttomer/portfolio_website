@@ -31,21 +31,26 @@ function initThreeScene() {
         size: 0.005,
         color: 0x00f3ff,
         transparent: true,
-        opacity: 0.8,
+        opacity: 0.3, // Much more subtle particles
     });
 
     const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
     scene.add(particlesMesh);
 
-    // Add ambient light for the astronaut
-    const ambientLight = new THREE.AmbientLight(0x404040, 0.6);
+    // Add stronger ambient light for the astronaut
+    const ambientLight = new THREE.AmbientLight(0x606060, 1.2);
     scene.add(ambientLight);
     
-    // Add directional light for better astronaut visibility
-    const directionalLight = new THREE.DirectionalLight(0x00f3ff, 0.8);
+    // Add brighter directional light for better astronaut visibility
+    const directionalLight = new THREE.DirectionalLight(0x00f3ff, 1.5);
     directionalLight.position.set(5, 10, 5);
     directionalLight.castShadow = true;
     scene.add(directionalLight);
+    
+    // Add additional rim lighting to make astronaut pop
+    const rimLight = new THREE.DirectionalLight(0xffffff, 0.8);
+    rimLight.position.set(-5, 2, -5);
+    scene.add(rimLight);
 
     // Load the astronaut model
     let astronaut = null;
@@ -73,14 +78,32 @@ function initThreeScene() {
                 astronaut.position.set(0, -5.2, -4); // Move down more for full head visibility
                 console.log('🚀 Initial positioning at y=-5.2');
                 
-                // Add a bright material to make it more visible
+                // Enhance materials to make astronaut stand out
                 astronaut.traverse((child) => {
                     if (child.isMesh) {
                         child.castShadow = true;
                         child.receiveShadow = true;
-                        // Make it more visible
+                        
+                        // Make it much more visible and prominent
                         if (child.material) {
-                            child.material.emissive = new THREE.Color(0x222222);
+                            // Clone the material to avoid affecting other instances
+                            child.material = child.material.clone();
+                            
+                            // Add subtle glow/emissive
+                            child.material.emissive = new THREE.Color(0x444444);
+                            
+                            // Increase metalness and roughness for better lighting response
+                            if (child.material.metalness !== undefined) {
+                                child.material.metalness = 0.8;
+                                child.material.roughness = 0.3;
+                            }
+                            
+                            // Ensure it's not transparent
+                            child.material.transparent = false;
+                            child.material.opacity = 1.0;
+                            
+                            // Add slight bloom effect
+                            child.material.emissiveIntensity = 0.3;
                         }
                     }
                 });
