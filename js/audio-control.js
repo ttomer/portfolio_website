@@ -7,6 +7,7 @@ class AudioController {
         this.isPlaying = false;
         this.userInteracted = false;
         this.autoPlayAttempted = false;
+        this.isMuted = this.getMutedState(); // Load cached mute state
         
         this.init();
     }
@@ -38,6 +39,14 @@ class AudioController {
     async attemptAutoplay() {
         this.autoPlayAttempted = true;
         
+        // Don't attempt autoplay if user has muted
+        if (this.isMuted) {
+            console.log('🔇 Audio muted by user preference - skipping autoplay');
+            this.isPlaying = false;
+            this.updateIcon();
+            return;
+        }
+        
         try {
             // Try to play immediately on page load
             await this.audio.play();
@@ -61,7 +70,10 @@ class AudioController {
         // Wait for any user interaction to enable audio
         const enableAudio = () => {
             this.userInteracted = true;
-            this.startAudio();
+            // Only start audio if not muted by user preference
+            if (!this.isMuted) {
+                this.startAudio();
+            }
             
             // Remove listeners after first interaction
             document.removeEventListener('click', enableAudio);
@@ -95,9 +107,14 @@ class AudioController {
         
         if (this.isPlaying) {
             this.pauseAudio();
+            this.isMuted = true;
         } else {
             this.startAudio();
+            this.isMuted = false;
         }
+        
+        // Cache the mute state
+        this.saveMutedState(this.isMuted);
     }
     
     pauseAudio() {
@@ -108,7 +125,7 @@ class AudioController {
     }
     
     updateIcon() {
-        if (this.isPlaying) {
+        if (this.isPlaying && !this.isMuted) {
             this.audioIcon.className = 'fas fa-volume-up';
             this.audioToggle.classList.remove('muted');
             this.audioToggle.setAttribute('aria-label', 'Mute background music');
@@ -116,6 +133,23 @@ class AudioController {
             this.audioIcon.className = 'fas fa-volume-mute';
             this.audioToggle.classList.add('muted');
             this.audioToggle.setAttribute('aria-label', 'Unmute background music');
+        }
+    }
+    
+    getMutedState() {
+        try {
+            return localStorage.getItem('audioMuted') === 'true';
+        } catch (error) {
+            console.log('LocalStorage not available, using default mute state');
+            return false;
+        }
+    }
+    
+    saveMutedState(isMuted) {
+        try {
+            localStorage.setItem('audioMuted', isMuted.toString());
+        } catch (error) {
+            console.log('Could not save mute state to localStorage');
         }
     }
     
