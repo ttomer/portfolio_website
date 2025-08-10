@@ -545,20 +545,8 @@
     
     <!-- Service Worker Registration - DISABLED FOR DEVELOPMENT -->
     <script>
-        // Temporarily disabled to prevent caching during development
-        /*
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', function() {
-                navigator.serviceWorker.register('/sw.js')
-                    .then(function(registration) {
-                        console.log('ServiceWorker registration successful:', registration.scope);
-                    })
-                    .catch(function(err) {
-                        console.log('ServiceWorker registration failed:', err);
-                    });
-            });
-        }
-        */
+        // COMPLETELY DISABLED FOR DEVELOPMENT - NO CACHING
+        console.log('ServiceWorker disabled for development');
     </script>
 </body>
 </html>

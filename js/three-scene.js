@@ -70,8 +70,8 @@ function initThreeScene() {
                 astronaut.scale.set(3, 3, 3); // Reduced scale to see full model
                 
                 // Position astronaut fully in viewport - ensure head doesn't cut off
-                astronaut.position.set(0, -4.5, -4); // Move down a bit more for full visibility
-                console.log('🚀 Initial positioning at y=-4.5');
+                astronaut.position.set(0, -5.2, -4); // Move down more for full head visibility
+                console.log('🚀 Initial positioning at y=-5.2');
                 
                 // Add a bright material to make it more visible
                 astronaut.traverse((child) => {
@@ -123,7 +123,7 @@ function initThreeScene() {
                 console.log('📏 Model center Y:', (box.max.y + box.min.y) / 2);
                 
                 // Store the actual position for animation
-                astronautBaseY = -4.5; 
+                astronautBaseY = -5.2; 
                 console.log('🎯 Using position y =', astronautBaseY);
             },
             (progress) => {
@@ -208,24 +208,33 @@ function initThreeScene() {
             // Calculate zoom factor for head-focused positioning
             const zoomFactor = scrollProgress * 2; // How much closer we're getting
             
-            // Floating animation (up and down movement) - keep it always visible
-            const baseFloating = astronautBaseY + Math.sin(time * 0.5) * 0.2;
+            // Gentle unpredictable floating animation - multiple overlapping sine waves
+            const float1 = Math.sin(time * 0.3) * 0.2;           // Slow large movement
+            const float2 = Math.sin(time * 0.5) * 0.1;           // Medium speed movement  
+            const float3 = Math.sin(time * 0.8) * 0.05;          // Fast small movement
+            const float4 = Math.cos(time * 0.25) * 0.08;         // Cosine wave for variation
+            
+            const complexFloating = astronautBaseY + float1 + float2 + float3 + float4;
             
             // As we zoom in, move the astronaut down more so we focus on head area
             // The more we zoom, the more we shift focus to the upper body
             const headFocusOffset = zoomFactor * 1.2; // Adjust this to control head focus
-            astronaut.position.y = baseFloating - headFocusOffset;
+            astronaut.position.y = complexFloating - headFocusOffset;
             
             // Rotation based on scroll progress
             astronaut.rotation.y = scrollProgress * Math.PI * 4; // Multiple rotations
             astronaut.rotation.x = Math.sin(scrollProgress * Math.PI * 2) * 0.2;
             
-            // Position change based on scroll (moves across screen)
-            astronaut.position.x = Math.sin(scrollProgress * Math.PI * 2) * 1.5;
+            // Position change based on scroll (moves across screen) + gentle drift
+            const scrollMovement = Math.sin(scrollProgress * Math.PI * 2) * 1.5;
+            const driftX = Math.sin(time * 0.2) * 0.1; // Gentle X drift
+            astronaut.position.x = scrollMovement + driftX;
+            
             astronaut.position.z = -4 + zoomFactor; // Moves closer as you scroll
             
-            // Add gentle bobbing rotation
-            astronaut.rotation.z = Math.sin(time * 0.3) * 0.1;
+            // Gentle rotation bobbing (not chaotic spinning)
+            const bobZ = Math.sin(time * 0.25) * 0.05;  // Very gentle tilting
+            astronaut.rotation.z = bobZ; // Use = instead of += to prevent accumulation
         }
 
         renderer.render(scene, camera);
