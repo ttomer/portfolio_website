@@ -93,6 +93,7 @@
     <!-- External Dependencies -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://unpkg.com/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     
     <!-- Local Stylesheets -->
@@ -542,8 +543,10 @@
     <script src="js/skills-animation.js"></script>
     <script src="js/contact-form.js"></script>
     
-    <!-- Service Worker Registration -->
+    <!-- Service Worker Registration - DISABLED FOR DEVELOPMENT -->
     <script>
+        // Temporarily disabled to prevent caching during development
+        /*
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', function() {
                 navigator.serviceWorker.register('/sw.js')
@@ -555,6 +558,7 @@
                     });
             });
         }
+        */
     </script>
 </body>
 </html>
