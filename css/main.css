@@ -19,41 +19,41 @@
     --dark-bg: var(--bg-color);
 }
 
-/* Light Theme */
+/* Light Theme - Sophisticated and Easy on Eyes */
 [data-theme="light"] {
-    --bg-color: #fafbfc;
-    --bg-secondary: #f1f3f4;
-    --text-color: #1a202c;
-    --text-secondary: rgba(26, 32, 44, 0.7);
-    --glass-bg: rgba(255, 255, 255, 0.8);
-    --border-color: rgba(0, 0, 0, 0.15);
-    --card-bg: rgba(255, 255, 255, 0.9);
+    --bg-color: #f8f9fa;
+    --bg-secondary: #e9ecef;
+    --text-color: #2d3748;
+    --text-secondary: rgba(45, 55, 72, 0.75);
+    --glass-bg: rgba(248, 249, 250, 0.85);
+    --border-color: rgba(45, 55, 72, 0.12);
+    --card-bg: rgba(255, 255, 255, 0.7);
     
-    /* Adjust neon colors for light mode - more vibrant but readable */
-    --neon-blue: #1e40af;
-    --neon-purple: #7c3aed;
-    --neon-pink: #be185d;
+    /* Softer neon colors that work well on light backgrounds */
+    --neon-blue: #0066cc;
+    --neon-purple: #6b46c1;
+    --neon-pink: #db2777;
 }
 
-/* Light mode specific overrides */
+/* Light mode section backgrounds - subtle and sophisticated */
 [data-theme="light"] .profile-section {
-    background: linear-gradient(45deg, rgba(30, 64, 175, 0.08), rgba(124, 58, 237, 0.08));
+    background: linear-gradient(45deg, rgba(0, 102, 204, 0.04), rgba(107, 70, 193, 0.04));
 }
 
 [data-theme="light"] .projects-section {
-    background: linear-gradient(45deg, rgba(30, 64, 175, 0.03), rgba(124, 58, 237, 0.03));
+    background: linear-gradient(45deg, rgba(0, 102, 204, 0.02), rgba(107, 70, 193, 0.02));
 }
 
 [data-theme="light"] .experience-section {
-    background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(30, 64, 175, 0.05));
+    background: linear-gradient(to bottom, rgba(248, 249, 250, 0), rgba(0, 102, 204, 0.03));
 }
 
 [data-theme="light"] .skills-section {
-    background: linear-gradient(to bottom, rgba(30, 64, 175, 0.05), rgba(124, 58, 237, 0.05));
+    background: linear-gradient(to bottom, rgba(0, 102, 204, 0.03), rgba(107, 70, 193, 0.03));
 }
 
 [data-theme="light"] .contact-section {
-    background: linear-gradient(to bottom, rgba(124, 58, 237, 0.05), rgba(0,0,0,0));
+    background: linear-gradient(to bottom, rgba(107, 70, 193, 0.03), rgba(248, 249, 250, 0));
 }
 
 /* Fix text visibility in light mode */
@@ -71,9 +71,10 @@
 
 /* Navigation dots visibility in light mode */
 [data-theme="light"] .nav-label {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.9);
     border: 1px solid var(--border-color);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 12px rgba(45, 55, 72, 0.08);
+    backdrop-filter: blur(8px);
 }
 
 /* Improve card visibility in light mode */
@@ -85,20 +86,105 @@
 [data-theme="light"] .contact-card {
     background: var(--card-bg);
     border: 1px solid var(--border-color);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(45, 55, 72, 0.06);
+    backdrop-filter: blur(10px);
 }
 
 /* Theme toggle in light mode */
 [data-theme="light"] .theme-toggle {
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.85);
     border: 2px solid var(--neon-blue);
-    box-shadow: 0 0 20px rgba(30, 64, 175, 0.2);
+    box-shadow: 0 0 20px rgba(0, 102, 204, 0.15);
+    backdrop-filter: blur(8px);
 }
 
 [data-theme="light"] .theme-toggle:hover {
     background: var(--neon-blue);
     color: white;
-    box-shadow: 0 0 30px rgba(30, 64, 175, 0.4);
+    box-shadow: 0 0 30px rgba(0, 102, 204, 0.3);
+}
+
+/* Enhanced glitch effect for light theme */
+[data-theme="light"] .glitch {
+    text-shadow: 0.05em 0 0 var(--neon-blue),
+                 -0.025em -0.05em 0 var(--neon-purple),
+                 0.025em 0.05em 0 var(--neon-pink);
+}
+
+[data-theme="light"] .glitch-loading {
+    text-shadow: 0.05em 0 0 var(--neon-blue),
+                 -0.025em -0.05em 0 var(--neon-purple),
+                 0.025em 0.05em 0 var(--neon-pink);
+}
+
+/* Better gradient text for light theme */
+[data-theme="light"] .profile-title,
+[data-theme="light"] .projects-title,
+[data-theme="light"] .section-title,
+[data-theme="light"] .subtitle {
+    background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* Enhanced project links for light theme */
+[data-theme="light"] .project-link {
+    border-color: var(--neon-purple);
+    color: var(--neon-purple);
+}
+
+[data-theme="light"] .project-link:hover {
+    background: var(--neon-purple);
+    color: white;
+    box-shadow: 0 2px 8px rgba(107, 70, 193, 0.2);
+}
+
+/* Better tech items for light theme */
+[data-theme="light"] .tech-item {
+    background: rgba(248, 249, 250, 0.8);
+    border-color: var(--neon-blue);
+    color: var(--neon-blue);
+}
+
+[data-theme="light"] .tech-item:hover {
+    background: var(--neon-blue);
+    color: white;
+    box-shadow: 0 2px 8px rgba(0, 102, 204, 0.2);
+}
+
+/* Contact Form Light Theme Fixes */
+[data-theme="light"] .form-label {
+    color: var(--text-color);
+}
+
+[data-theme="light"] .form-input {
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+}
+
+[data-theme="light"] .form-input::placeholder {
+    color: var(--text-secondary);
+}
+
+[data-theme="light"] .form-input:focus {
+    border-color: var(--neon-blue);
+    box-shadow: 0 0 15px rgba(0, 102, 204, 0.2);
+    background: rgba(255, 255, 255, 0.95);
+}
+
+[data-theme="light"] .submit-btn {
+    background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+    color: white;
+}
+
+[data-theme="light"] .contact-info-content h3 {
+    color: var(--text-color);
+}
+
+[data-theme="light"] .contact-info-content p {
+    color: var(--text-secondary);
 }
 
 /* Reset and Base Styles */
