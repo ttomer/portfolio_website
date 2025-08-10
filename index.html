@@ -111,6 +111,18 @@
         <i class="fas fa-sun" id="theme-icon"></i>
     </button>
     
+    <!-- Audio Toggle Button -->
+    <button id="audio-toggle" class="audio-toggle" aria-label="Toggle background music">
+        <i class="fas fa-volume-up" id="audio-icon"></i>
+    </button>
+    
+    <!-- Background Audio -->
+    <audio id="background-audio" loop preload="auto">
+        <source src="assets/audio/background-music.mp3" type="audio/mpeg">
+        <source src="assets/audio/background-music.ogg" type="audio/ogg">
+        Your browser does not support the audio element.
+    </audio>
+    
     <!-- Hero Section -->
     <section class="hero">
         <div class="glitch-wrapper">
@@ -534,6 +546,7 @@
     <!-- JavaScript Files -->
     <script src="js/loading-animations.js"></script>
     <script src="js/theme-toggle.js"></script>
+    <script src="js/audio-control.js"></script>
     <script src="js/smooth-scroll.js"></script>
     <script src="js/mobile-gestures.js"></script>
     <script src="js/three-scene.js"></script>

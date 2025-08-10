@@ -104,6 +104,26 @@
     box-shadow: 0 0 30px rgba(0, 102, 204, 0.3);
 }
 
+/* Audio button light theme */
+[data-theme="light"] .audio-toggle {
+    background: rgba(255, 255, 255, 0.85);
+    border: 2px solid var(--neon-purple);
+    box-shadow: 0 0 20px rgba(107, 70, 193, 0.15);
+    backdrop-filter: blur(8px);
+}
+
+[data-theme="light"] .audio-toggle:hover {
+    background: var(--neon-purple);
+    color: white;
+    box-shadow: 0 0 30px rgba(107, 70, 193, 0.3);
+}
+
+[data-theme="light"] .audio-toggle.muted {
+    color: rgba(107, 70, 193, 0.5);
+    border-color: rgba(107, 70, 193, 0.5);
+    box-shadow: 0 0 20px rgba(107, 70, 193, 0.1);
+}
+
 /* Enhanced glitch effect for light theme */
 [data-theme="light"] .glitch {
     text-shadow: 0.05em 0 0 var(--neon-blue),
@@ -228,6 +248,28 @@ html {
     box-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
 }
 
+/* Audio Toggle Button */
+.audio-toggle {
+    position: fixed;
+    top: 2rem;
+    right: 5rem; /* Positioned to the left of theme toggle */
+    z-index: 1000;
+    width: 60px;
+    height: 60px;
+    border: 2px solid var(--neon-purple);
+    border-radius: 50%;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    color: var(--neon-purple);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 20px rgba(157, 0, 255, 0.3);
+}
+
 .theme-toggle:hover {
     background: var(--neon-blue);
     color: var(--bg-color);
@@ -237,6 +279,23 @@ html {
 
 .theme-toggle:active {
     transform: scale(0.95);
+}
+
+.audio-toggle:hover {
+    background: var(--neon-purple);
+    color: var(--bg-color);
+    transform: scale(1.1);
+    box-shadow: 0 0 30px rgba(157, 0, 255, 0.5);
+}
+
+.audio-toggle:active {
+    transform: scale(0.95);
+}
+
+.audio-toggle.muted {
+    color: rgba(157, 0, 255, 0.5);
+    border-color: rgba(157, 0, 255, 0.5);
+    box-shadow: 0 0 20px rgba(157, 0, 255, 0.1);
 }
 
 /* Theme toggle animation */
