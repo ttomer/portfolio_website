@@ -130,16 +130,8 @@ class MobileGestures {
                     this.onSwipeRight();
                 }
             }
-        } else {
-            // Vertical swipe
-            if (Math.abs(diffY) > minSwipeDistance) {
-                if (diffY > 0) {
-                    this.onSwipeUp();
-                } else {
-                    this.onSwipeDown();
-                }
-            }
         }
+        // Vertical swipes disabled for natural scrolling
     }
 
     onSwipeLeft() {
@@ -156,13 +148,13 @@ class MobileGestures {
     }
 
     onSwipeUp() {
-        // Scroll to next section
-        this.scrollToNextSection();
+        // Disabled - allow natural scrolling
+        // this.scrollToNextSection();
     }
 
     onSwipeDown() {
-        // Scroll to previous section
-        this.scrollToPreviousSection();
+        // Disabled - allow natural scrolling  
+        // this.scrollToPreviousSection();
     }
 
     nextProject() {

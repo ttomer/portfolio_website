@@ -10,6 +10,11 @@ class SmoothScrollNavigation {
     }
 
     init() {
+        // Skip initialization on mobile devices to allow natural scrolling
+        if (window.innerWidth <= 768) {
+            return;
+        }
+        
         this.createNavigationDots();
         this.bindEvents();
         this.updateActiveSection();
@@ -189,7 +194,21 @@ class SmoothScrollNavigation {
 
 // Initialize smooth scroll navigation when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    new SmoothScrollNavigation();
+    let smoothScroll = new SmoothScrollNavigation();
+    
+    // Handle resize events to enable/disable smooth scrolling
+    window.addEventListener('resize', () => {
+        if (window.innerWidth <= 768) {
+            // Remove navigation on mobile
+            const nav = document.querySelector('.scroll-navigation');
+            if (nav) {
+                nav.remove();
+            }
+        } else if (!document.querySelector('.scroll-navigation')) {
+            // Re-initialize on desktop
+            smoothScroll = new SmoothScrollNavigation();
+        }
+    });
 });
 
 // Export for potential module use
