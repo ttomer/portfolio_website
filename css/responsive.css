@@ -330,7 +330,6 @@
 /* Swipe indicators */
 @media (max-width: 768px) {
     .projects-section::after {
-        content: "👈 Swipe to navigate projects";
         display: block;
         text-align: center;
         padding: 1rem;
