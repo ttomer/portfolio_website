@@ -31,7 +31,7 @@ function initThreeScene() {
         size: 0.005,
         color: 0x00f3ff,
         transparent: true,
-        opacity: 0.3, // Much more subtle particles
+        opacity: 0.5, // Much more subtle particles
     });
 
     const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
