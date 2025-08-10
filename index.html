@@ -14,6 +14,82 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>Tomer Torgeman | Game Developer & Software Engineer</title>
     
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Tomer Torgeman - Game Developer & Software Engineer specializing in Unity, Unreal Engine, and performance optimization. Experienced in casino games, mobile development, and QA automation.">
+    <meta name="keywords" content="game developer, software engineer, unity developer, unreal engine, c#, javascript, mobile games, casino games, performance optimization, QA automation, vancouver developer">
+    <meta name="author" content="Tomer Torgeman">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://ttomer.github.io/portfolio_website/">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Tomer Torgeman | Game Developer & Software Engineer">
+    <meta property="og:description" content="Experienced game developer and software engineer specializing in Unity, Unreal Engine, and performance optimization. Browse my portfolio of game projects and technical achievements.">
+    <meta property="og:image" content="https://ttomer.github.io/portfolio_website/assets/images/preview.png">
+    <meta property="og:image:alt" content="Tomer Torgeman Portfolio Preview">
+    <meta property="og:url" content="https://ttomer.github.io/portfolio_website/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Tomer Torgeman Portfolio">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Tomer Torgeman | Game Developer & Software Engineer">
+    <meta name="twitter:description" content="Experienced game developer and software engineer specializing in Unity, Unreal Engine, and performance optimization.">
+    <meta name="twitter:image" content="https://ttomer.github.io/portfolio_website/assets/images/preview.png">
+    <meta name="twitter:image:alt" content="Tomer Torgeman Portfolio Preview">
+    <meta name="twitter:creator" content="@ttomer">
+    
+    <!-- Theme and PWA -->
+    <meta name="theme-color" content="#0a0a0f">
+    <meta name="color-scheme" content="dark light">
+    <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="css/main.css" as="style">
+    <link rel="preload" href="assets/images/e.jpg" as="image">
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Tomer Torgeman",
+        "jobTitle": "Game Developer & Software Engineer",
+        "description": "Experienced game developer and software engineer specializing in Unity, Unreal Engine, and performance optimization.",
+        "url": "https://ttomer.github.io/portfolio_website/",
+        "image": "https://ttomer.github.io/portfolio_website/assets/images/e.jpg",
+        "sameAs": [
+            "https://github.com/ttomer",
+            "https://www.linkedin.com/in/tomer-torgeman-a12494173/"
+        ],
+        "worksFor": {
+            "@type": "Organization",
+            "name": "Jackpot Digital Inc."
+        },
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Vancouver",
+            "addressCountry": "Canada"
+        },
+        "knowsAbout": [
+            "Unity Game Development",
+            "Unreal Engine",
+            "C# Programming",
+            "JavaScript",
+            "Performance Optimization",
+            "Mobile Game Development",
+            "QA Automation",
+            "Casino Games"
+        ],
+        "alumniOf": {
+            "@type": "Organization",
+            "name": "Blastworks Inc."
+        }
+    }
+    </script>
+    
     <!-- External Dependencies -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -28,6 +104,11 @@
 <body>
     <!-- Hero Section -->
     <canvas id="hero-canvas"></canvas>
+    
+    <!-- Theme Toggle Button -->
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark/light mode">
+        <i class="fas fa-sun" id="theme-icon"></i>
+    </button>
     
     <!-- Hero Section -->
     <section class="hero">
@@ -51,7 +132,7 @@
             <div class="profile-card floating">
                 <div class="profile-card-inner">
                     <div class="profile-front">
-                        <img src="assets/images/e.jpg" alt="Tomer Torgeman" class="profile-image">
+                        <img src="assets/images/e.jpg" alt="Tomer Torgeman - Game Developer and Software Engineer" class="profile-image" loading="lazy">
                     </div>
                     <div class="profile-back">
                         <h3>Quick Facts</h3>
@@ -93,7 +174,7 @@
         <div class="projects-grid">
             <!-- FPS Project -->
             <div class="project-card">
-                <video class="project-video" data-src="https://github.com/ttomer/portfolio_website/raw/refs/heads/legacy/assets/FPS-Shooter.mov" autoplay loop muted playsinline></video>
+                <video class="project-video" data-src="assets/videos/FPS-Shooter.mov" autoplay loop muted playsinline preload="metadata"></video>
                 <div class="project-content">
                     <h3 class="project-title">First-Person Shooter</h3>
                     <p class="project-description">A challenging FPS game with unique levels and mechanics, built with Unreal Engine.</p>
@@ -105,7 +186,7 @@
         
             <!-- Toon Tanks Project -->
             <div class="project-card">
-                <video class="project-video" data-src="https://github.com/ttomer/portfolio_website/raw/refs/heads/legacy/assets/ToonTanks%20720p.mov" autoplay loop muted playsinline></video>
+                <video class="project-video" data-src="assets/videos/ToonTanks 720p.mov" autoplay loop muted playsinline preload="metadata"></video>
                 <div class="project-content">
                     <h3 class="project-title">Toon Tanks</h3>
                     <p class="project-description">Third-person tank shooter where the aim is to destroy all your enemies (the turrets).</p>
@@ -117,7 +198,7 @@
         
             <!-- Crypt Raider Project -->
             <div class="project-card">
-                <video class="project-video" data-src="https://github.com/ttomer/portfolio_website/raw/refs/heads/legacy/assets/cryptraider.mov" autoplay loop muted playsinline></video>
+                <video class="project-video" data-src="assets/videos/cryptraider.mov" autoplay loop muted playsinline preload="metadata"></video>
                 <div class="project-content">
                     <h3 class="project-title">Crypt Raider</h3>
                     <p class="project-description">A puzzle game where you explore a dungeon and try to find a bronze statue.</p>
@@ -129,7 +210,7 @@
         
             <!-- Obstacle Assault Project -->
             <div class="project-card">
-                <video class="project-video" data-src="https://github.com/ttomer/portfolio_website/raw/refs/heads/legacy/assets/ObstacleAssault.mov" autoplay loop muted playsinline></video>
+                <video class="project-video" data-src="assets/videos/ObstacleAssault.mov" autoplay loop muted playsinline preload="metadata"></video>
                 <div class="project-content">
                     <h3 class="project-title">Obstacle Assault</h3>
                     <p class="project-description">An Obstacle course game where your goal is to reach the end.</p>
@@ -145,7 +226,7 @@
         <div class="projects-grid">
             <!-- Original Load Time -->
             <div class="project-card">
-                <video class="project-video" data-src="https://github.com/ttomer/portfolio_website/raw/refs/heads/legacy/assets/original.mov" autoplay loop muted playsinline></video>
+                <video class="project-video" data-src="assets/videos/original.mov" autoplay loop muted playsinline preload="metadata"></video>
                 <div class="project-content">
                     <h3 class="project-title">Unoptimized Load Time</h3>
                     <p class="project-description">Load time before optimization for reference could easily take 30+ seconds depending on the device.</p>
@@ -157,7 +238,7 @@
 
             <!-- Async Load Time -->
             <div class="project-card">
-                <video class="project-video" data-src="https://github.com/ttomer/portfolio_website/raw/refs/heads/legacy/assets/async.mov" autoplay loop muted playsinline></video>
+                <video class="project-video" data-src="assets/videos/async.mov" autoplay loop muted playsinline preload="metadata"></video>
                 <div class="project-content">
                     <h3 class="project-title">Async Load Time</h3>
                     <p class="project-description">Load times were cut by 50-70% using asynchronous loading methods.</p>
@@ -169,7 +250,7 @@
 
             <!-- Cached Async Load Time -->
             <div class="project-card">
-                <video class="project-video" data-src="https://github.com/ttomer/portfolio_website/raw/refs/heads/legacy/assets/async%20cached.mov" autoplay loop muted playsinline></video>
+                <video class="project-video" data-src="assets/videos/async cached.mov" autoplay loop muted playsinline preload="metadata"></video>
                 <div class="project-content">
                     <h3 class="project-title">Cached Async Load Time</h3>
                     <p class="project-description">Load times reduced to 3-10 seconds using cached asynchronous methods.</p>
@@ -450,11 +531,30 @@
     </footer>
 
     <!-- JavaScript Files -->
+    <script src="js/loading-animations.js"></script>
+    <script src="js/theme-toggle.js"></script>
+    <script src="js/smooth-scroll.js"></script>
+    <script src="js/mobile-gestures.js"></script>
     <script src="js/three-scene.js"></script>
     <script src="js/video-loader.js"></script>
     <script src="js/project-modal.js"></script>
     <script src="js/timeline-animation.js"></script>
     <script src="js/skills-animation.js"></script>
     <script src="js/contact-form.js"></script>
+    
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(function(registration) {
+                        console.log('ServiceWorker registration successful:', registration.scope);
+                    })
+                    .catch(function(err) {
+                        console.log('ServiceWorker registration failed:', err);
+                    });
+            });
+        }
+    </script>
 </body>
 </html>

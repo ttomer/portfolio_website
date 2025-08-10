@@ -1,5 +1,222 @@
 /* Animation Keyframes and Effects */
 
+/* Loading Overlay */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-color);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.5s ease, opacity 0.5s ease;
+    will-change: background-color, opacity;
+}
+
+.loading-container {
+    text-align: center;
+    position: relative;
+}
+
+.glitch-loading {
+    font-size: 2rem;
+    font-weight: bold;
+    position: relative;
+    margin-bottom: 2rem;
+    text-shadow: 0.05em 0 0 var(--neon-blue),
+                 -0.025em -0.05em 0 var(--neon-purple),
+                 0.025em 0.05em 0 var(--neon-pink);
+    animation: glitch 2s infinite;
+}
+
+.glitch-loading span {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.glitch-loading span:first-child {
+    animation: glitch 650ms infinite;
+    clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+    transform: translate(-0.025em, -0.0125em);
+    opacity: 0.75;
+}
+
+.glitch-loading span:last-child {
+    animation: glitch 375ms infinite;
+    clip-path: polygon(0 80%, 100% 20%, 100% 100%, 0 100%);
+    transform: translate(0.0125em, 0.025em);
+    opacity: 0.75;
+}
+
+.loading-progress {
+    width: 300px;
+    margin: 0 auto;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
+    width: 0%;
+    transition: width 0.3s ease;
+    box-shadow: 0 0 10px var(--neon-blue);
+}
+
+.loading-text {
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.loading-percentage {
+    color: var(--neon-blue);
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.loading-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: var(--neon-blue);
+    border-radius: 50%;
+    animation: float-particle 3s infinite ease-in-out;
+}
+
+.particle:nth-child(odd) {
+    background: var(--neon-purple);
+    animation-delay: -1s;
+}
+
+.particle:nth-child(3n) {
+    background: var(--neon-pink);
+    animation-delay: -2s;
+}
+
+/* Reveal animations */
+.reveal-element {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.6s ease;
+}
+
+.reveal-element.reveal-ready {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal-element.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Hero loaded state */
+.hero.loaded .glitch {
+    animation-duration: 3s;
+}
+
+.hero.loaded .subtitle {
+    animation-delay: 0.5s;
+}
+
+/* Skeleton Loader */
+.skeleton-loader {
+    padding: 1rem;
+    transition: opacity 0.3s ease;
+}
+
+.skeleton-header,
+.skeleton-line,
+.skeleton-avatar {
+    background: linear-gradient(90deg, 
+        var(--glass-bg) 25%, 
+        rgba(255,255,255,0.2) 50%, 
+        var(--glass-bg) 75%);
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.5s infinite;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+}
+
+.skeleton-header {
+    height: 24px;
+    width: 60%;
+}
+
+.skeleton-line {
+    height: 16px;
+    width: 100%;
+}
+
+.skeleton-line.short {
+    width: 40%;
+}
+
+.skeleton-avatar {
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    margin: 1rem auto;
+}
+
+@keyframes skeleton-loading {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+@keyframes float-particle {
+    0%, 100% {
+        transform: translate(0, 0) rotate(0deg);
+        opacity: 0;
+    }
+    10%, 90% {
+        opacity: 1;
+    }
+    50% {
+        transform: translate(100px, -100px) rotate(180deg);
+        opacity: 0.5;
+    }
+}
+
+
+
+.glitch-loading {
+    will-change: transform, opacity;
+    transform-origin: center center;
+}
+
+.loading-progress,
+.loading-particles {
+    transition: opacity 0.5s ease;
+}
+
+
+
 /* Glitch Effect Animation */
 @keyframes glitch {
     0% {

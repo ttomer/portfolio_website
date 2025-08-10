@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+
+# Important pages
+Allow: /index.html
+Allow: /css/
+Allow: /js/
+Allow: /assets/
+
+# Block legacy/unused paths
+Disallow: /static/
+Disallow: /_posts/
+Disallow: /index-original.html
+
+# Sitemap location
+Sitemap: https://ttomer.github.io/portfolio_website/sitemap.xml
+
+# Crawl delay (optional - helps with server load)
+Crawl-delay: 1
