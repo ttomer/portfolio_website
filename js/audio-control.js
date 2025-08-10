@@ -6,6 +6,7 @@ class AudioController {
         this.audioIcon = document.getElementById('audio-icon');
         this.isPlaying = false;
         this.userInteracted = false;
+        this.autoPlayAttempted = false;
         
         this.init();
     }
@@ -19,7 +20,8 @@ class AudioController {
             this.toggleAudio();
         });
         
-        // Modern browsers require user interaction before playing audio
+        // Try to autoplay immediately, then set up fallback for user interaction
+        this.attemptAutoplay();
         this.setupUserInteraction();
         
         // Handle audio loading
@@ -33,7 +35,29 @@ class AudioController {
         });
     }
     
+    async attemptAutoplay() {
+        this.autoPlayAttempted = true;
+        
+        try {
+            // Try to play immediately on page load
+            await this.audio.play();
+            this.isPlaying = true;
+            this.userInteracted = true; // Mark as if user interacted since autoplay worked
+            this.updateIcon();
+            console.log('🎵 Background music auto-started successfully!');
+        } catch (error) {
+            console.log('⏸️ Autoplay blocked by browser - waiting for user interaction');
+            this.isPlaying = false;
+            this.updateIcon();
+        }
+    }
+    
     setupUserInteraction() {
+        // Only set up user interaction listeners if autoplay failed
+        if (this.userInteracted) {
+            return; // Autoplay succeeded, no need for user interaction listeners
+        }
+        
         // Wait for any user interaction to enable audio
         const enableAudio = () => {
             this.userInteracted = true;
