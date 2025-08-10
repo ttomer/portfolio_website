@@ -78,7 +78,6 @@
 }
 
 /* Improve card visibility in light mode */
-[data-theme="light"] .profile-card,
 [data-theme="light"] .project-card,
 [data-theme="light"] .timeline-content,
 [data-theme="light"] .skill-category,
